@@ -1,56 +1,76 @@
-.credit-card-product {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(20, 20, 50, 0.08);
-  padding: 24px 0 0 0;
-  max-width: 350px;
-  margin: 0 auto;
-  font-family: 'Roboto', Arial, sans-serif;
-}
-
-.credit-card-product__image {
+/* Container for the entire credit card component */
+.credit-card__container {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 24px;
+  flex-direction: column;
+  gap: 20px;
+  transition: transform 0.3s ease-in-out;
 }
 
-.credit-card-product__image img {
-  max-width: 180px;
+/* Hover effect on the container for a subtle lift */
+.credit-card__container:hover {
+  transform: translateY(-5px);
+}
+
+/* Style for the credit card name (h1) */
+.credit-card__name {
+  font-size: 2.2em;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin: 0;
+}
+
+/* Style for the credit card image */
+.credit-card__image {
+  width: 100%;
+  max-height: 350px;
+  object-fit: contain;
   border-radius: 8px;
 }
 
-.credit-card-product__title {
-  color: #23235f;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 12px;
+/* Styling for the description, features, and benefits sections */
+.credit-card__description,
+.credit-card__features,
+.credit-card__benfits { /* Note: Fix the typo 'benfits' to 'benefits' in your JS for consistency */
+  font-size: 1em;
+  line-height: 1.6;
+  color: #555;
 }
 
-.credit-card-product__desc {
-  color: #333;
-  font-size: 1rem;
-  margin-bottom: 18px;
+/* Add a margin to separate the content blocks */
+.credit-card__features,
+.credit-card__benfits {
+  margin-top: 15px;
 }
 
-.credit-card-product__offer {
-  font-weight: 700;
-  margin-bottom: 8px;
+/* Optional: Add a title for each section */
+.credit-card__description::before {
+  content: 'Description';
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #007bff;
 }
 
-.credit-card-product__details {
-  color: #23235f;
-  font-size: 1rem;
-  margin-bottom: 8px;
+.credit-card__features::before {
+  content: 'Key Features';
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #007bff;
 }
 
-.credit-card-product__details strong {
-  font-weight: 700;
-}
-
-.credit-card-product__already {
-  color: #23235f;
-  font-size: 1rem;
-  margin-bottom: 0;
-  font-weight: 700;
+.credit-card__benfits::before {
+  content: 'Exclusive Benefits';
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #007bff;
 }
