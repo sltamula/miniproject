@@ -171,6 +171,59 @@
               }
             }
           }
+        },
+        {
+          "title": "Credit Card Product",
+          "id": "credit-card-product",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Credit Card Product",
+                  "model": "credit-card-product",
+                  "fields": [
+                    {
+                      "name": "button",
+                      "label": "Button",
+                      "component": "field-group",
+                      "fields": [
+                        {
+                          "component": "aem-content",
+                          "name": "link",
+                          "label": "Link"
+                        },
+                        {
+                          "component": "text",
+                          "name": "linkText",
+                          "label": "Text"
+                        },
+                        {
+                          "component": "select",
+                          "name": "linkType",
+                          "label": "Type",
+                          "options": [
+                            {
+                              "name": "Default",
+                              "value": ""
+                            },
+                            {
+                              "name": "Primary",
+                              "value": "primary"
+                            },
+                            {
+                              "name": "Secondary",
+                              "value": "secondary"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
         }
       ]
     }
