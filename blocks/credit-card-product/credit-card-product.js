@@ -43,7 +43,6 @@ export default async function decorate(block) {
       cardContainer.append(
         cardName,
         cardImage,
-        cardHeader,
         cardFeatures,
         cardBenefits,
         cardDescription
