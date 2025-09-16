@@ -1,5 +1,5 @@
 export default async function decorate(block) {
-  const fragmentPath = block.textContent.trim();
+  const fragmentPath = block.textContent.trim().split('\n')[0];
 
   // Correct: Construct the full URL for the persisted query, including variables.
   const url = `https://author-p9606-e71941.adobeaemcloud.com/graphql/execute.json/miniproject/getCreditCardDetails;path=${fragmentPath}`;
