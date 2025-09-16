@@ -76,7 +76,7 @@ function renderContent(block, details, children) {
  */
 export default async function decorate(block) {
   const children = [...block.children];
-  const cfPath = children[0].querySelector('a')?.href;
+  const cfPath = children[0].querySelector('a')?.title;
   
   if (!cfPath) {
     console.error('Content fragment path not found.');
