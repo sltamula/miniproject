@@ -11,7 +11,7 @@ export default async function decorate(block) {
     }
     const cfData = await response.json();
     console.log(cfData);
-    const ccDetail = cfData.data.creditCardContainerByPath.item;
+    const ccDetails = cfData.data.creditCardContainerByPath.item;
 
     block.innerHTML = ''; // Clear existing content
 
@@ -21,23 +21,23 @@ export default async function decorate(block) {
       cardContainer.className = 'credit-card__container';
 
       const cardName = document.createElement('h1');
-      cardName.textContent = ccDetail.name;
+      cardName.textContent = ccDetails.name;
       cardName.className = 'credit-card__name';
 
       const cardImage = document.createElement('img');
-      cardImage.src = ccDetail.image['_path'];
+      cardImage.src = ccDetails.image['_path'];
       cardImage.className = 'credit-card__image';
 
       const cardDescription = document.createElement('div');
-      cardDescription.textContent = ccDetail.description.html;
+      cardDescription.textContent = ccDetails.description.html;
       cardDescription.className = 'credit-card__description';
 
       const cardFeatures = document.createElement('div');
-      cardFeatures.textContent = ccDetail.cardFeatures.html;
+      cardFeatures.textContent = ccDetails.cardFeatures.html;
       cardFeatures.className = 'credit-card__features';
 
       const cardBenefits = document.createElement('div');
-      cardBenefits.textContent = ccDetail.cardBenefits.html;
+      cardBenefits.textContent = ccDetails.cardBenefits.html;
       cardBenefits.className = 'credit-card__benfits';
 
       cardContainer.append(
