@@ -9,9 +9,9 @@ export default async function decorate(block) {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const data = await response.json();
-    console.log(data);
-    const ccDetails = data.creditCardContainerByPath.item;
+    const cfData = await response.json();
+    console.log(cfData);
+    const ccDetails = cfData.data.creditCardContainerByPath.item;
 
     block.innerHTML = ''; // Clear existing content
 
