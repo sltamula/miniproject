@@ -28,8 +28,8 @@ function renderContent(block, details, children) {
   block.innerHTML = '';
 
   const [, linkDiv, buttonTextDiv] = children;
-  const authoredLink = linkDiv.textContent.trim();
-  const authoredButtonText = buttonTextDiv.textContent.trim();
+  const authoredButtonText = linkDiv.textContent.trim();
+  const authoredLink = buttonTextDiv.textContent.trim();
   const cfPath = children[0].querySelector('a')?.href;
   
   // Create card container
