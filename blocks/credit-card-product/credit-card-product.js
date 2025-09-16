@@ -20,7 +20,7 @@ export default async function decorate(block) {
       const cardContainer = document.createElement('div');
       cardContainer.className = 'credit-card__container';
 
-      const cardName = document.createElement('div');
+      const cardName = document.createElement('h3');
       cardName.textContent = ccDetails.name;
       cardName.className = 'credit-card__name';
 
