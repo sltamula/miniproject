@@ -1,45 +1,12 @@
 .credit-card-product {
   background: #fff;
+  border: 2px solid #000000;
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(20, 20, 50, 0.08);
   padding: 24px 0 0 0;
   max-width: 350px;
   margin: 0 auto;
   font-family: 'Roboto', Arial, sans-serif;
-}
-.credit-card-product-container {
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  overflow: hidden;
-  max-width: 400px;
-  margin: 24px auto;
-  font-family: 'Roboto', Arial, sans-serif;
-}
-
-.credit-card-product-image {
-  width: 100%;
-  display: block;
-  border-top-left-radius: 24px;
-  border-top-right-radius: 24px;
-}
-
-.credit-card-product-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #191919;
-  margin: 24px 24px 8px 24px;
-  line-height: 1.1;
-}
-
-.credit-card-product-content {
-  padding: 0 24px 24px 24px;
-  color: #191919;
-  font-size: 1.05rem;
-}
-
-.credit-card-product-content b {
-  font-weight: 700;
 }
 
 .credit-card-product__image {
