@@ -219,8 +219,8 @@
     "id": "credit-card-product",
     "fields": [
       {
-        "component": "aem-content",
-        "name": "aem-content-fragment",
+        "component": "aem-content-fragment",
+        "name": "reference",
         "label": "Content Fragment Reference"
       },
       {
