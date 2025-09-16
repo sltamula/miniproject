@@ -13,7 +13,7 @@ export default async function decorate(block) {
     }
     const data = await response.json();
     console.log(data);
-    return data.data.creditCardContainerByPath.item; // Access data based on the response structure
+    return data.creditCardContainerByPath.item; // Access data based on the response structure
   } catch (error) {
     console.error('Error fetching data:', error);
     return null; // or throw an error
