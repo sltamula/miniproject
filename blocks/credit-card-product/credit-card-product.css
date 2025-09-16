@@ -28,11 +28,6 @@
     margin: 0 auto;
 }
 
-.credit-card-product__image img {
-    max-width: 180px;
-    border-radius: 8px;
-}
-
 .credit-card-product__title {
   color: #23235f;
   font-size: 1.5rem;
