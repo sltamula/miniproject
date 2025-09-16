@@ -11,7 +11,7 @@ export default async function decorate(block) {
     }
     const cfData = await response.json();
     console.log(cfData);
-    const ccDetails = cfData.data.creditCardContainerByPath.item;
+    const ccDetail = cfData.data.creditCardContainerByPath.item;
 
     block.innerHTML = ''; // Clear existing content
 
