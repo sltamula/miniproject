@@ -1,3 +1,56 @@
-.h1 {
-    background-color: aquamarine;
+.credit-card-product {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(20, 20, 50, 0.08);
+  padding: 24px 0 0 0;
+  max-width: 350px;
+  margin: 0 auto;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+.credit-card-product__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 24px;
+}
+
+.credit-card-product__image img {
+  max-width: 180px;
+  border-radius: 8px;
+}
+
+.credit-card-product__title {
+  color: #23235f;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.credit-card-product__desc {
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 18px;
+}
+
+.credit-card-product__offer {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.credit-card-product__details {
+  color: #23235f;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.credit-card-product__details strong {
+  font-weight: 700;
+}
+
+.credit-card-product__already {
+  color: #23235f;
+  font-size: 1rem;
+  margin-bottom: 0;
+  font-weight: 700;
 }
