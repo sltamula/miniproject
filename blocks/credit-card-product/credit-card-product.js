@@ -55,7 +55,7 @@ function renderContent(block, details, children) {
   });
 
   // Handle button generation
-  createButton(cardContainer, cfPath, authoredButtonText);
+  createButton(cardContainer, authoredLink, authoredButtonText);
 
   // Append the card container to the block
   block.appendChild(cardContainer);
