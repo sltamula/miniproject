@@ -55,9 +55,7 @@ function renderContent(block, details, children) {
   });
 
   // Handle button generation
-  if (!authoredLink || authoredLink === 'Path') {
-    createButton(cardContainer, cfPath, authoredButtonText);
-  } 
+  createButton(cardContainer, cfPath, authoredButtonText);
 
   // Append the card container to the block
   block.appendChild(cardContainer);
