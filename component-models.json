@@ -224,38 +224,31 @@
         "label": "Content Fragment Reference"
       },
       {
-        "name": "button",
-        "label": "Button",
-        "component": "field-group",
-        "fields": [
+        "component": "aem-content",
+        "name": "link",
+        "label": "Path"
+      },
+      {
+        "component": "text",
+        "name": "linkText",
+        "label": "Text"
+      },
+      {
+        "component": "select",
+        "name": "linkType",
+        "label": "Type",
+        "options": [
           {
-            "component": "aem-content",
-            "name": "link",
-            "label": "Link"
+            "name": "default",
+            "value": "default"
           },
           {
-            "component": "text",
-            "name": "linkText",
-            "label": "Text"
+            "name": "primary",
+            "value": "primary"
           },
           {
-            "component": "select",
-            "name": "linkType",
-            "label": "Type",
-            "options": [
-              {
-                "name": "default",
-                "value": ""
-              },
-              {
-                "name": "primary",
-                "value": "primary"
-              },
-              {
-                "name": "secondary",
-                "value": "secondary"
-              }
-            ]
+            "name": "secondary",
+            "value": "secondary"
           }
         ]
       }
