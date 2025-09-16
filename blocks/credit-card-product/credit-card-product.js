@@ -20,13 +20,13 @@ export default async function decorate(block) {
       const cardContainer = document.createElement('div');
       cardContainer.className = 'credit-card__container';
 
-      const cardName = document.createElement('h3');
-      cardName.textContent = ccDetails.name;
-      cardName.className = 'credit-card__name';
-
       const cardImage = document.createElement('img');
       cardImage.src = ccDetails.image['_path'];
       cardImage.className = 'credit-card__image';
+
+      const cardName = document.createElement('h3');
+      cardName.textContent = ccDetails.name;
+      cardName.className = 'credit-card__name';
 
       const cardDescription = document.createElement('div');
       cardDescription.textContent = ccDetails.description.html;
