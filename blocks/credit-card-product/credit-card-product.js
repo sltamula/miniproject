@@ -16,46 +16,40 @@ export default async function decorate(block) {
     block.innerHTML = ''; // Clear existing content
 
     // Render the fetched data
-    if (ccDetails.length > 0) {
-      ccDetails.forEach(ccDetail => {
-        const cardContainer = document.createElement('div');
-        cardContainer.className = 'credit-card__container';
+    if (ccDetails) {
+      const cardContainer = document.createElement('div');
+      cardContainer.className = 'credit-card__container';
 
-        const cardName = document.createElement('h1');
-        cardName.textContent = ccDetail.name;
-        cardName.className = 'credit-card__name';
+      const cardName = document.createElement('h1');
+      cardName.textContent = ccDetail.name;
+      cardName.className = 'credit-card__name';
 
-        const cardImage = document.createElement('img');
-        cardImage.src = ccDetail.image['_path'];
-        cardImage.className = 'credit-card__image';
+      const cardImage = document.createElement('img');
+      cardImage.src = ccDetail.image['_path'];
+      cardImage.className = 'credit-card__image';
 
-        const cardHeader = document.createElement('div');
-        cardHeader.textContent = ccDetail.customHeader;
-        cardHeader.className = 'credit-card__header';
+      const cardDescription = document.createElement('div');
+      cardDescription.textContent = ccDetail.description.html;
+      cardDescription.className = 'credit-card__description';
 
-        const cardDescription = document.createElement('div');
-        cardDescription.textContent = ccDetail.description.html;
-        cardDescription.className = 'credit-card__description';
+      const cardFeatures = document.createElement('div');
+      cardFeatures.textContent = ccDetail.cardFeatures.html;
+      cardFeatures.className = 'credit-card__features';
 
-        const cardFeatures = document.createElement('div');
-        cardFeatures.textContent = ccDetail.cardFeatures.html;
-        cardFeatures.className = 'credit-card__features';
+      const cardBenefits = document.createElement('div');
+      cardBenefits.textContent = ccDetail.cardBenefits.html;
+      cardBenefits.className = 'credit-card__benfits';
 
-        const cardBenefits = document.createElement('div');
-        cardBenefits.textContent = ccDetail.extraBenefits.html;
-        cardBenefits.className = 'credit-card__benfits';
+      cardContainer.append(
+        cardName,
+        cardImage,
+        cardHeader,
+        cardFeatures,
+        cardBenefits,
+        cardDescription
+      );
 
-        cardContainer.append(
-          cardName,
-          cardImage,
-          cardHeader,
-          cardFeatures,
-          cardBenefits,
-          cardDescription
-        );
-
-        block.appendChild(cardContainer);
-      });
+      block.appendChild(cardContainer);
     }
   } catch (error) {
     console.error('Error fetching data:', error);
