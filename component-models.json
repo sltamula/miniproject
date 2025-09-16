@@ -220,7 +220,7 @@
     "fields": [
       {
         "component": "aem-content",
-        "name": "reference",
+        "name": "aem-content-fragment",
         "label": "Content Fragment Reference"
       },
       {
@@ -231,12 +231,12 @@
       {
         "component": "text",
         "name": "linkText",
-        "label": "Text"
+        "label": "Button Text"
       },
       {
         "component": "select",
         "name": "linkType",
-        "label": "Type",
+        "label": "Button Type",
         "options": [
           {
             "name": "default",
