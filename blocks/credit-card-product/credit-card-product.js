@@ -57,10 +57,7 @@ function renderContent(block, details, children) {
   // Handle button generation
   if (!authoredLink || authoredLink === 'Path') {
     createButton(cardContainer, cfPath, authoredButtonText);
-  } else {
-    // If a link is authored, decorate the existing link as a button
-    decorateButtons(block);
-  }
+  } 
 
   // Append the card container to the block
   block.appendChild(cardContainer);
