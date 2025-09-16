@@ -41,8 +41,8 @@ export default async function decorate(block) {
       cardBenefits.className = 'credit-card__benfits';
 
       cardContainer.append(
-        cardName,
         cardImage,
+        cardName,
         cardFeatures,
         cardBenefits,
         cardDescription
