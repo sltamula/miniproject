@@ -214,5 +214,15 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "credit-card-product",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "reference",
+        "label": "Reference"
+      }
+    ]
   }
 ]
