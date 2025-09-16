@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box
+}
 .credit-card-product {
   background: #fff;
   border: 2px solid #000000;
