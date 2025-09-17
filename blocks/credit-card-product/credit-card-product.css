@@ -56,3 +56,8 @@ h3.credit-card__name {
     font-size: 1rem;
     margin-bottom: 8px;
 }
+
+.btn-wrapper {
+    padding: 0 18px12px 18px;
+    margin-top: auto;
+}
