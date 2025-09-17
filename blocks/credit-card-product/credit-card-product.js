@@ -63,12 +63,29 @@ function renderContent(block, details, children) {
 
   elementsToCreate.forEach(
     ({ tag, src, textContent, innerHTML, className }) => {
+      // const element = document.createElement(tag);
+      // if (src) element.src = src;
+      // if (textContent) element.textContent = textContent;
+      // if (innerHTML) element.innerHTML = innerHTML;
+      // if (className) element.className = className;
+      // cardContainer.appendChild(element);
+
       const element = document.createElement(tag);
-      if (src) element.src = src;
-      if (textContent) element.textContent = textContent;
-      if (innerHTML) element.innerHTML = innerHTML;
-      if (className) element.className = className;
-      cardContainer.appendChild(element);
+
+      if (className !== 'credit-card__image') {
+        if (src) element.src = src;
+        if (textContent) element.textContent = textContent;
+        if (innerHTML) element.innerHTML = innerHTML;
+        if (className) element.className = className;
+        cardBodyContainer.appendChild(element);
+        cardContainer.appendChild(element);
+      } else {
+        if (src) element.src = src;
+        if (textContent) element.textContent = textContent;
+        if (innerHTML) element.innerHTML = innerHTML;
+        if (className) element.className = className;
+        cardContainer.appendChild(element);
+      }
     }
   );
 
