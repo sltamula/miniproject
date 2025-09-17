@@ -3,7 +3,7 @@
 }
 
 .credit-card-product {
-/*     display: flex; */
+    /*     display: flex; */
     background: #ffffff;
     border: 1px solid #dedee1;
     border-radius: 16px;
@@ -83,7 +83,8 @@ h3.credit-card__name {
 }
 
 .section.credit-card-product-container {
-    display: flex !important;
+    display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
 }
 
