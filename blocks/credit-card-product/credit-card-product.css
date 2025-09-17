@@ -3,11 +3,12 @@
 }
 
 .credit-card-product {
+    display: flex;
     background: #fff;
     border: 1px solid #dedee1;
     border-radius: 16px;
     max-width: 350px;
-    margin-bottom: 24px;
+    margin: 0 auto;
 }
 
 .credit-card__container {
@@ -39,7 +40,7 @@
     border-top-right-radius: 16px;
     border-radius: 0 0 8px 8px;
     display: block;
-    margin: 0 auto;
+    margin-bottom: 24px;
 }
 
 h3.credit-card__name {
