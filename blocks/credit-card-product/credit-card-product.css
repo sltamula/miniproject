@@ -1,15 +1,18 @@
 * {
-  box-sizing: border-box
+    box-sizing: border-box;
 }
 .credit-card-product {
-  background: #fff;
-  border: 2px solid #000000;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(20, 20, 50, 0.08);
-  padding: 24px 0 0 0;
-  max-width: 350px;
-  margin: 0 auto;
-  font-family: 'Roboto', Arial, sans-serif;
+    background: #fff;
+    border: 2px solid #000000;
+    border-radius: 16px;
+
+    box-shadow: 0 2px 8px rgba(20, 20, 50, 0.08);
+    padding: 24px 0 0 0;
+    max-width: 350px;
+    margin: 0 auto;
+    font-family: 'Roboto', Arial, sans-serif;
+    box-sizing: border-box; /* Ensures padding and border don't affect width */
+    width: 100%; /* Default width for screens smaller than the 'sm' breakpoint */
 }
 
 .credit-card-product__image {
@@ -29,36 +32,36 @@
 }
 
 .credit-card-product__title {
-  color: #23235f;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 12px;
+    color: #23235f;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
 }
 
 .credit-card-product__desc {
-  color: #333;
-  font-size: 1rem;
-  margin-bottom: 18px;
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 18px;
 }
 
 .credit-card-product__offer {
-  font-weight: 700;
-  margin-bottom: 8px;
+    font-weight: 700;
+    margin-bottom: 8px;
 }
 
 .credit-card-product__details {
-  color: #23235f;
-  font-size: 1rem;
-  margin-bottom: 8px;
+    color: #23235f;
+    font-size: 1rem;
+    margin-bottom: 8px;
 }
 
 .credit-card-product__details strong {
-  font-weight: 700;
+    font-weight: 700;
 }
 
 .credit-card-product__already {
-  color: #23235f;
-  font-size: 1rem;
-  margin-bottom: 0;
-  font-weight: 700;
+    color: #23235f;
+    font-size: 1rem;
+    margin-bottom: 0;
+    font-weight: 700;
 }
