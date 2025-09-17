@@ -13,10 +13,14 @@ function createButton(container, path, text) {
   buttonLink.textContent = text || 'Learn More';
   buttonLink.classList.add('button');
 
+  const buttonDiv = document.createElement('div');
+  buttonDiv.className = 'btn-wrapper';
+  container.append(buttonDiv);
+
   const newButtonDiv = document.createElement('div');
-  newButtonDiv.className = 'btn-wrapper';
+  newButtonDiv.className = 'btn';
   newButtonDiv.append(buttonLink);
-  container.append(newButtonDiv);
+  buttonDiv.append(newButtonDiv);
 }
 
 /**
