@@ -82,10 +82,9 @@ h3.credit-card__name {
     transition: background 0.2s ease, color 0.2s ease;
 }
 
-.section.credit-card-product-container {
+.credit-card-product-container {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
 }
 
 main > .section > div {
