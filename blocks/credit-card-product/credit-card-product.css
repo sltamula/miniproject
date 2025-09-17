@@ -3,7 +3,6 @@
 }
 
 .credit-card-product {
-    /*     display: flex; */
     background: #ffffff;
     border: 1px solid #dedee1;
     border-radius: 16px;
@@ -80,6 +79,7 @@ h3.credit-card__name {
     background-color: #e55d58;
     color: #ffffff;
     text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
 .section.credit-card-product-container {
