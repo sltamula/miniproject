@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
 }
+
 .credit-card-product {
     background: #fff;
     border: 2px solid #000000;
@@ -10,8 +11,6 @@
     max-width: 350px;
     margin: 0 auto;
     font-family: 'Roboto', Arial, sans-serif;
-    box-sizing: border-box; /* Ensures padding and border don't affect width */
-    width: 100%; /* Default width for screens smaller than the 'sm' breakpoint */
 }
 
 .credit-card__container {
