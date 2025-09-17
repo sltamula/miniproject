@@ -86,3 +86,7 @@ h3.credit-card__name {
     display: flex !important;
     flex-direction: row;
 }
+
+main > .section > div {
+    margin: 0;
+}
