@@ -61,3 +61,7 @@ h3.credit-card__name {
     padding: 0px 18px 12px 18px;
     margin-top: auto;
 }
+
+.btn.button {
+    border-color: #da1710;
+}
