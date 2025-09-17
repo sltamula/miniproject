@@ -1,5 +1,5 @@
-
-const API_ENDPOINT = 'https://author-p9606-e71941.adobeaemcloud.com/graphql/execute.json/miniproject/getCreditCardDetails';
+const API_ENDPOINT =
+  'https://author-p9606-e71941.adobeaemcloud.com/graphql/execute.json/miniproject/getCreditCardDetails';
 
 /**
  * Creates and appends a button to a container.
@@ -30,30 +30,57 @@ function renderContent(block, details, children) {
 
   const [, linkDiv, buttonTextDiv] = children;
   const authoredButtonText = linkDiv.textContent.trim();
-  const authoredLink = children[1].querySelector('a')?.href
+  const authoredLink = children[1].querySelector('a')?.href;
   const cfPath = children[0].querySelector('a')?.title;
-  
+
   // Create card container
   const cardContainer = document.createElement('div');
   cardContainer.className = 'credit-card__container';
+
+  const cardBodyContainer = document.createElement('div');
+  cardBodyContainer.className = 'credit-card__body';
 
   // Create and append card details
   const elementsToCreate = [
     { tag: 'img', src: details.image._path, className: 'credit-card__image' },
     { tag: 'h3', textContent: details.name, className: 'credit-card__name' },
-    { tag: 'div', innerHTML: details.description.html, className: 'credit-card__description' },
-    { tag: 'div', innerHTML: details.cardFeatures.html, className: 'credit-card__features' },
-    { tag: 'div', innerHTML: details.cardBenefits.html, className: 'credit-card__benefits' },
+    {
+      tag: 'div',
+      innerHTML: details.description.html,
+      className: 'credit-card__description',
+    },
+    {
+      tag: 'div',
+      innerHTML: details.cardFeatures.html,
+      className: 'credit-card__features',
+    },
+    {
+      tag: 'div',
+      innerHTML: details.cardBenefits.html,
+      className: 'credit-card__benefits',
+    },
   ];
 
-  elementsToCreate.forEach(({ tag, src, textContent, innerHTML, className }) => {
-    const element = document.createElement(tag);
-    if (src) element.src = src;
-    if (textContent) element.textContent = textContent;
-    if (innerHTML) element.innerHTML = innerHTML;
-    if (className) element.className = className;
-    cardContainer.appendChild(element);
-  });
+  elementsToCreate.forEach(
+    ({ tag, src, textContent, innerHTML, className }) => {
+      // const element = document.createElement(tag);
+      // if (src) element.src = src;
+      // if (textContent) element.textContent = textContent;
+      // if (innerHTML) element.innerHTML = innerHTML;
+      // if (className) element.className = className;
+
+      const element = document.createElement(tag);
+      if (className && className !== 'credit-card__image') {
+        element.src = src;
+        element.textContent = textContent;
+        element.innerHTML = innerHTML;
+        element.className = className;
+        cardBodyContainer.appendChild(element);
+      } else {
+        cardContainer.appendChild(element);
+      }
+    }
+  );
 
   // Handle button generation
   createButton(cardContainer, authoredLink, authoredButtonText);
@@ -73,7 +100,7 @@ function renderContent(block, details, children) {
 export default async function decorate(block) {
   const children = [...block.children];
   const cfPath = children[0].querySelector('a')?.title;
-  
+
   if (!cfPath) {
     console.error('Content fragment path not found.');
     return;
