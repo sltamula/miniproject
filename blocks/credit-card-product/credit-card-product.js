@@ -76,8 +76,8 @@ function renderContent(block, details, children) {
         element.innerHTML = innerHTML;
         element.className = className;
         cardBodyContainer.appendChild(element);
-      } cardContainer.appendChild(element);
       }
+      cardContainer.appendChild(element);
     }
   );
 
