@@ -232,25 +232,6 @@
         "component": "text",
         "name": "linkText",
         "label": "Button Text"
-      },
-      {
-        "component": "select",
-        "name": "linkType",
-        "label": "Button Type",
-        "options": [
-          {
-            "name": "default",
-            "value": "default"
-          },
-          {
-            "name": "primary",
-            "value": "primary"
-          },
-          {
-            "name": "secondary",
-            "value": "secondary"
-          }
-        ]
       }
     ]
   }
