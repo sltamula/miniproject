@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+.section.credit-card-product-container {
+    display: flex;
+    flex-direction: row;
+}
+
 .credit-card-product {
     display: flex;
     background: #ffffff;
