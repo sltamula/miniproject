@@ -63,6 +63,9 @@ h3.credit-card__name {
 }
 
 .btn-wrapper a.button {
-    border: 1px solid #da1710;
     padding: 5px 12px;
+    border: 1px solid #da1710;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #181b25;
 }
