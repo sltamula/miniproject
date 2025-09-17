@@ -46,6 +46,7 @@
 h3.credit-card__name {
     color: #1f1c4f;
     font-family: Roboto !important;
+    font-size: 24px;
     font-weight: 700;
     margin: 0 0 12px 0;
 }
