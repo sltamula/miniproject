@@ -62,7 +62,7 @@ h3.credit-card__name {
     margin-top: auto;
 }
 
-.btn-wrapper.btn {
+.btn-wrapper .btn {
     display: flex;
     flex-direction: column;
 }
