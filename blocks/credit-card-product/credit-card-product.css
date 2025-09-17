@@ -46,9 +46,8 @@
     margin: 0 auto;
 }
 
-.credit-card__title {
-    color: #23235f;
-    font-size: 1.5rem;
+.credit-card__name {
+    color: #1f1c4f;
     font-weight: 700;
     margin-bottom: 12px;
 }
@@ -59,24 +58,8 @@
     margin-bottom: 18px;
 }
 
-.credit-card__offer {
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
 .credit-card__details {
     color: #23235f;
     font-size: 1rem;
     margin-bottom: 8px;
-}
-
-.credit-card_details strong {
-    font-weight: 700;
-}
-
-.credit-card__already {
-    color: #23235f;
-    font-size: 1rem;
-    margin-bottom: 0;
-    font-weight: 700;
 }
