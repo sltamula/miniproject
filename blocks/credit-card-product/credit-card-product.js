@@ -63,31 +63,24 @@ function renderContent(block, details, children) {
 
   elementsToCreate.forEach(
     ({ tag, src, textContent, innerHTML, className }) => {
-      // const element = document.createElement(tag);
-      // if (src) element.src = src;
-      // if (textContent) element.textContent = textContent;
-      // if (innerHTML) element.innerHTML = innerHTML;
-      // if (className) element.className = className;
-      // cardContainer.appendChild(element);
-
       const element = document.createElement(tag);
 
-      if (className !== 'credit-card__image') {
-        if (src) element.src = src;
-        if (textContent) element.textContent = textContent;
-        if (innerHTML) element.innerHTML = innerHTML;
-        if (className) element.className = className;
-        cardBodyContainer.appendChild(element);
+      if (src) element.src = src;
+      if (textContent) element.textContent = textContent;
+      if (innerHTML) element.innerHTML = innerHTML;
+      if (className) element.className = className;
+
+      // Append the image to the main container, everything else to the body
+      if (tag === 'img') {
         cardContainer.appendChild(element);
       } else {
-        if (src) element.src = src;
-        if (textContent) element.textContent = textContent;
-        if (innerHTML) element.innerHTML = innerHTML;
-        if (className) element.className = className;
-        cardContainer.appendChild(element);
+        cardBodyContainer.appendChild(element);
       }
     }
   );
+
+  // Append the populated card body to the main card container
+  cardContainer.appendChild(cardBodyContainer);
 
   // Handle button generation
   createButton(cardContainer, authoredLink, authoredButtonText);
