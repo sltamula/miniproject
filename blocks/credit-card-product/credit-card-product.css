@@ -49,7 +49,7 @@
 .credit-card__name {
     color: #1f1c4f;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin: 10px 20px 30px 40px;
 }
 
 .credit-card__desc {
