@@ -2,11 +2,6 @@
     box-sizing: border-box;
 }
 
-.section.credit-card-product-container {
-    display: flex;
-    flex-direction: row;
-}
-
 .credit-card-product {
     display: flex;
     background: #ffffff;
@@ -85,4 +80,9 @@ h3.credit-card__name {
     background-color: #e55d58;
     color: #ffffff;
     text-decoration: none;
+}
+
+.section.credit-card-product-container {
+    display: flex !important;
+    flex-direction: row;
 }
