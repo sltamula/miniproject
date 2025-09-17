@@ -14,6 +14,7 @@ function createButton(container, path, text) {
   buttonLink.classList.add('button');
 
   const newButtonDiv = document.createElement('div');
+  newButtonDiv.className = 'btn-wrapper';
   newButtonDiv.append(buttonLink);
   container.append(newButtonDiv);
 }
