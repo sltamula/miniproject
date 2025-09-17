@@ -2,11 +2,16 @@
     box-sizing: border-box;
 }
 
+.credit-card-product.block {
+    display: flex;
+}
+
 .credit-card-product {
     background: #ffffff;
     border: 1px solid #dedee1;
     border-radius: 16px;
     max-width: 350px;
+    min-height: 100%;
     margin: 0 auto;
 }
 
