@@ -1,24 +1,32 @@
+/* Box model setup for all elements */
 * {
     box-sizing: border-box;
 }
 
+/* Core card container styles */
 .credit-card-product.block {
     display: flex;
+    flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
+    gap: 1.5rem; /* Adds space between cards */
+    justify-content: center;
 }
 
 .credit-card-product {
     background: #ffffff;
     border: 1px solid #dedee1;
-    border-radius: 16px;
+    border-radius: 1rem; /* Using rem for relative sizing */
     max-width: 350px;
-    min-height: 100%;
+    width: 100%; /* Ensures it takes full width on small screens */
     margin: 0 auto;
+    display: flex; /* Ensures inner content uses flexbox */
+    flex-direction: column;
 }
 
+/* Inner card elements */
 .credit-card__container {
     display: flex;
     flex-direction: column;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 1.5;
     font-weight: 400;
     color: #181b25;
@@ -28,43 +36,41 @@
 }
 
 .credit-card__body {
-    padding: 24px 18px 30px 18px;
+    padding: 1.5rem 1rem 1.875rem; /* Using rem for padding */
 }
 
 .credit-card__image {
     width: 100%;
-    padding: 0;
-    margin: 0;
-    border-radius: 15px 15px 0 0;
+    border-radius: 1rem 1rem 0 0;
     background-color: #f3f4f6;
+    display: flex; /* Ensures image inside is centered */
+    justify-content: center;
+    align-items: center;
 }
 
 .credit-card__image img {
     width: 100%;
     max-width: 100%;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    border-radius: 0 0 8px 8px;
+    border-radius: 1rem 1rem 0 0;
     display: block;
-    margin-bottom: 24px;
 }
 
 h3.credit-card__name {
     color: #1f1c4f;
-    font-family: Roboto !important;
-    font-size: 24px;
+    font-family: Roboto, sans-serif !important;
+    font-size: 1.5rem;
     font-weight: 700;
-    margin: 0 0 12px 0;
+    margin: 0 0 0.75rem 0;
 }
 
 .credit-card__details {
     color: #23235f;
     font-size: 1rem;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
 }
 
 .btn-wrapper {
-    padding: 0px 18px 12px 18px;
+    padding: 0 1rem 0.75rem;
     margin-top: auto;
 }
 
@@ -74,11 +80,13 @@ h3.credit-card__name {
 }
 
 .btn-wrapper a.button {
-    padding: 5px 12px;
+    padding: 0.5rem 0.75rem;
     border: 1px solid #da1710;
-    border-radius: 3px;
+    border-radius: 0.25rem;
     background-color: #ffffff;
     color: #181b25;
+    text-align: center; /* Centers button text */
+    text-decoration: none;
 }
 
 .btn-wrapper a.button:hover {
@@ -89,12 +97,15 @@ h3.credit-card__name {
     transition: background 0.2s ease, color 0.2s ease;
 }
 
-.credit-card-product-container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
 main > .section > div {
     margin: 0;
-    padding: 12px;
+    padding: 0.75rem;
+}
+
+/* --- Responsive Media Queries --- */
+/* For tablets and larger screens (e.g., 768px and up) */
+@media (min-width: 48em) {
+    .credit-card-product.block {
+        justify-content: flex-start;
+    }
 }
