@@ -37,10 +37,6 @@ function renderContent(block, details, children) {
   const authoredButtonText = linkDiv.textContent.trim();
   const authoredLink = children[1].querySelector('a')?.href;
 
-  const headingContainer = document.createElement('div');
-  headingContainer.className = 'heading-container';
-  headingContainer.textContent = 'Your Card Options';
-
   // Create card container
   const cardContainer = document.createElement('div');
   cardContainer.className = 'credit-card__container';
@@ -125,6 +121,10 @@ export default async function decorate(block) {
     const ccDetails = cfData?.data?.creditCardContainerByPath?.item;
 
     if (ccDetails) {
+      const headingContainer = document.createElement('div');
+      headingContainer.className = 'heading-wrapper';
+      headingContainer.textContent = 'Your Card Options';
+
       renderContent(block, ccDetails, children);
     } else {
       console.error('No credit card details found in content fragment.');
