@@ -2,10 +2,8 @@
     box-sizing: border-box;
 }
 
-@media (min-width: 48em) {
-    .credit-card-product.block {
-        display: flex;
-    }
+.credit-card-product.block {
+    display: flex;
 }
 
 .credit-card-product {
