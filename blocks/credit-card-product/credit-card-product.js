@@ -94,7 +94,8 @@ function renderContent(block, details, children) {
   createButton(cardContainer, authoredLink, authoredButtonText);
 
   // Append the card container to the block
-  block.appendChild(headingContainer, cardContainer);
+  block.appendChild(cardContainer);
+  headingContainer.appendChild(block);
 
   // Hide the original divs
   linkDiv.style.display = 'none';
