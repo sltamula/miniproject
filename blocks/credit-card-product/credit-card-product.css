@@ -2,8 +2,10 @@
     box-sizing: border-box;
 }
 
-.credit-card-product.block {
-    display: flex;
+@media (min-width: 48em) {
+    .credit-card-product.block {
+        display: flex;
+    }
 }
 
 .credit-card-product {
