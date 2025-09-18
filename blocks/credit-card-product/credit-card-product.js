@@ -95,7 +95,6 @@ function renderContent(block, details, children) {
 
   // Append the card container to the block
   block.appendChild(cardContainer);
-  headingContainer.appendChild(block);
 
   // Hide the original divs
   linkDiv.style.display = 'none';
