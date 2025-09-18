@@ -38,6 +38,10 @@ function renderContent(block, details, children) {
   const authoredLink = children[1].querySelector('a')?.href;
   // const cfPath = children[0].querySelector('a')?.title;
 
+  //create heading
+  document.querySelector('.credit-card-product-container').textContent =
+    'Your Card Options';
+
   // Create card container
   const cardContainer = document.createElement('div');
   cardContainer.className = 'credit-card__container';
