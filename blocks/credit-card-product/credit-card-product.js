@@ -36,11 +36,10 @@ function renderContent(block, details, children) {
   const [, linkDiv, buttonTextDiv] = children;
   const authoredButtonText = linkDiv.textContent.trim();
   const authoredLink = children[1].querySelector('a')?.href;
-  // const cfPath = children[0].querySelector('a')?.title;
 
-  //create heading
-  document.querySelector('.credit-card-product-container').textContent =
-    'Your Card Options';
+  const headingContainer = document.createElement('div');
+  headingContainer.className = 'heading-container';
+  headingContainer.textContent = 'Your Card Options';
 
   // Create card container
   const cardContainer = document.createElement('div');
@@ -89,7 +88,7 @@ function renderContent(block, details, children) {
   );
 
   // Append the populated card body to the main card container
-  cardContainer.appendChild(cardBodyContainer);
+  cardContainer.appendChild(headingContainer, cardBodyContainer);
 
   // Handle button generation
   createButton(cardContainer, authoredLink, authoredButtonText);
