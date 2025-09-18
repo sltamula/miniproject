@@ -88,13 +88,13 @@ function renderContent(block, details, children) {
   );
 
   // Append the populated card body to the main card container
-  cardContainer.appendChild(headingContainer, cardBodyContainer);
+  cardContainer.appendChild(cardBodyContainer);
 
   // Handle button generation
   createButton(cardContainer, authoredLink, authoredButtonText);
 
   // Append the card container to the block
-  block.appendChild(cardContainer);
+  block.appendChild(headingContainer, cardContainer);
 
   // Hide the original divs
   linkDiv.style.display = 'none';
