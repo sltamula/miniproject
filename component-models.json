@@ -234,5 +234,158 @@
         "label": "Button Text"
       }
     ]
+  },
+  {
+    "id": "accordion",
+    "fields": [
+      {
+        "component": "block-collection",
+        "name": "accordion-items",
+        "label": "Accordion Items",
+        "required": true,
+        "minItems": 1,
+        "maxItems": 10,
+        "group": "items",
+        "fields": [
+          {
+            "component": "text",
+            "name": "title",
+            "label": "Title",
+            "required": true,
+            "valueType": "string"
+          },
+          {
+            "component": "richtext",
+            "name": "content",
+            "label": "Content",
+            "required": true,
+            "valueType": "string",
+            "multiline": true
+          }
+        ]
+      },
+      {
+        "component": "checkbox",
+        "name": "single-expansion",
+        "label": "Single item expansion",
+        "description": "When selected, only one item can be expanded at a time.",
+        "valueType": "boolean",
+        "group": "properties"
+      }
+    ]
+  },
+  {
+    "id": "list",
+    "fields": [
+      {
+        "component": "tab-container",
+        "name": "list-settings",
+        "label": "List Settings",
+        "fields": [
+          {
+            "component": "tab",
+            "label": "List Items",
+            "fields": [
+              {
+                "component": "select",
+                "name": "listFrom",
+                "label": "Build List From",
+                "required": true,
+                "options": [
+                  {
+                    "value": "children",
+                    "label": "Child Pages"
+                  },
+                  {
+                    "value": "static",
+                    "label": "Static List"
+                  },
+                  {
+                    "value": "tags",
+                    "label": "Tags"
+                  },
+                  {
+                    "value": "search",
+                    "label": "Search"
+                  }
+                ]
+              },
+              {
+                "component": "pathfield",
+                "name": "parentPage",
+                "label": "Parent Page",
+                "description": "Select the parent page to build the list from.",
+                "valueType": "string",
+                "condition": "listFrom == 'children' || listFrom == 'tags'"
+              },
+              {
+                "component": "multifield",
+                "name": "staticList",
+                "label": "Static List",
+                "description": "Add pages to the list manually.",
+                "itemComponent": "pathfield",
+                "condition": "listFrom == 'static'"
+              },
+              {
+                "component": "tagfield",
+                "name": "tags",
+                "label": "Tags",
+                "description": "Select the tags to filter the list.",
+                "condition": "listFrom == 'tags'"
+              },
+              {
+                "component": "text",
+                "name": "searchQuery",
+                "label": "Search Query",
+                "description": "Enter the search term to find pages.",
+                "condition": "listFrom == 'search'"
+              }
+            ]
+          },
+          {
+            "component": "tab",
+            "label": "Display Options",
+            "fields": [
+              {
+                "component": "select",
+                "name": "orderBy",
+                "label": "Order By",
+                "options": [
+                  {
+                    "value": "title",
+                    "label": "Title"
+                  },
+                  {
+                    "value": "lastModified",
+                    "label": "Last Modified Date"
+                  }
+                ]
+              },
+              {
+                "component": "select",
+                "name": "sortOrder",
+                "label": "Sort Order",
+                "options": [
+                  {
+                    "value": "asc",
+                    "label": "Ascending"
+                  },
+                  {
+                    "value": "desc",
+                    "label": "Descending"
+                  }
+                ]
+              },
+              {
+                "component": "number",
+                "name": "maxItems",
+                "label": "Maximum Items",
+                "description": "Maximum number of items to display in the list."
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]
