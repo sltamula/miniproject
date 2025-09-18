@@ -121,16 +121,13 @@ export default async function decorate(block) {
     const ccDetails = cfData?.data?.creditCardContainerByPath?.item;
 
     if (ccDetails) {
-      const creditCardContainer = document.querySelector(
-        '.credit-card-product-container'
-      );
-
       const headingContainer = document.createElement('div');
       headingContainer.className = 'heading-wrapper';
       headingContainer.textContent = 'Your Card Options';
 
+      block.prepend(headingContainer);
+
       renderContent(block, ccDetails, children);
-      creditCardContainer.append(headingContainer, renderContent);
     } else {
       console.error('No credit card details found in content fragment.');
     }
