@@ -275,7 +275,7 @@
     ]
   },
   {
-    "id": "list",
+    "id": "product-list",
     "fields": [
       {
         "component": "tab-container",
