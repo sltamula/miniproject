@@ -254,14 +254,16 @@
         "label": "Path"
       },
       {
-        "component": "list",
+        "component": "aem-content",
         "name": "contentItems",
         "label": "Content Items",
+        "multi": true,
         "fields": [
           {
             "component": "aem-content",
             "name": "contentReference",
-            "label": "AEM Content Path"
+            "label": "AEM Content Path",
+            "multi": true
           }
         ]
       }
