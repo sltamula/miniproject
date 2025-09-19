@@ -244,7 +244,7 @@
         "label": "Heading Text"
       },
       {
-        "component": "container",
+        "component": "credit-card-product",
         "name": "contentFragmentItems",
         "label": "Content Fragment Items",
         "multi": true,
