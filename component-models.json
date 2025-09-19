@@ -254,14 +254,14 @@
             "label": "Content Fragment Reference"
           },
           {
-            "component": "aem-content",
-            "name": "link",
-            "label": "Path"
-          },
-          {
             "component": "text",
             "name": "linkText",
             "label": "Button Text"
+          },
+          {
+            "component": "aem-content",
+            "name": "link",
+            "label": "Path"
           }
         ]
       }
