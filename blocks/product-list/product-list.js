@@ -1,37 +1,137 @@
 const API_ENDPOINT =
   'https://author-p9606-e71941.adobeaemcloud.com/graphql/execute.json/miniproject/getCreditCardDetails';
 
-export default async function decorate(block) {
-  // Extract the content fragment path from the first child's link title.
-  const contentFragmentPath =
-    block.firstElementChild?.querySelector('a')?.title;
+/**
+ * Creates and appends a button to a container.
+ * @param {HTMLElement} container The element to append the button to.
+ * @param {string} path The href path for the button link.
+ * @param {string} text The text content for the button.
+ */
+function createButton(container, path, text) {
+  const buttonLink = document.createElement('a');
+  buttonLink.href = path || '#';
+  buttonLink.textContent = text || 'Learn More';
+  buttonLink.classList.add('button');
 
-  // Handle cases where no valid content fragment path is found.
-  if (!contentFragmentPath) {
-    console.log('Block does not contain a valid content fragment path.');
+  const buttonDiv = document.createElement('div');
+  buttonDiv.className = 'btn-wrapper';
+  container.append(buttonDiv);
+
+  const newButtonDiv = document.createElement('div');
+  newButtonDiv.className = 'btn';
+  newButtonDiv.append(buttonLink);
+  buttonDiv.append(newButtonDiv);
+}
+
+/**
+ * Renders the credit card details and a button.
+ * @param {HTMLElement} block The main block element.
+ * @param {object} details The fetched credit card details.
+ * @param {HTMLElement[]} children An array of the block's children elements.
+ */
+function renderContent(block, details, children) {
+  // Clear existing content from the block
+  block.innerHTML = '';
+
+  const [, linkDiv, buttonTextDiv] = children;
+  const authoredButtonText = linkDiv.textContent.trim();
+  const authoredLink = children[1].querySelector('a')?.href;
+
+  // Create card container
+  const cardContainer = document.createElement('div');
+  cardContainer.className = 'credit-card__container';
+
+  const cardBodyContainer = document.createElement('div');
+  cardBodyContainer.className = 'credit-card__body';
+
+  // Create and append card details
+  const elementsToCreate = [
+    { tag: 'img', src: details.image._path, className: 'credit-card__image' },
+    { tag: 'h3', textContent: details.name, className: 'credit-card__name' },
+    {
+      tag: 'div',
+      innerHTML: details.description.html,
+      className: 'credit-card__description',
+    },
+    {
+      tag: 'div',
+      innerHTML: details.cardFeatures.html,
+      className: 'credit-card__features',
+    },
+    {
+      tag: 'div',
+      innerHTML: details.cardBenefits.html,
+      className: 'credit-card__benefits',
+    },
+  ];
+
+  elementsToCreate.forEach(
+    ({ tag, src, textContent, innerHTML, className }) => {
+      const element = document.createElement(tag);
+
+      if (src) element.src = src;
+      if (textContent) element.textContent = textContent;
+      if (innerHTML) element.innerHTML = innerHTML;
+      if (className) element.className = className;
+
+      // Append the image to the main container, everything else to the body
+      if (tag === 'img') {
+        cardContainer.appendChild(element);
+      } else {
+        cardBodyContainer.appendChild(element);
+      }
+    }
+  );
+
+  // Append the populated card body to the main card container
+  cardContainer.appendChild(cardBodyContainer);
+
+  // Handle button generation
+  createButton(cardContainer, authoredLink, authoredButtonText);
+
+  // Append the card container to the block
+  block.appendChild(cardContainer);
+
+  // Hide the original divs
+  linkDiv.style.display = 'none';
+  buttonTextDiv.style.display = 'none';
+}
+
+/**
+ * Entry point for the block decoration.
+ * @param {HTMLElement} block The block element.
+ */
+export default async function decorate(block) {
+  const children = [...block.children];
+  const cfPath = children[0].querySelector('a')?.title;
+
+  if (!cfPath) {
+    console.error('Content fragment path not found.');
     return;
   }
 
-  // Construct the full API URL for the GraphQL query.
-  const graphqlUrl = `${API_ENDPOINT};path=${contentFragmentPath}`;
+  const url = `${API_ENDPOINT};path=${cfPath}`;
 
   try {
-    const response = await fetch(graphqlUrl);
-
+    const response = await fetch(url);
     if (!response.ok) {
-      // Throw a more informative error message.
-      throw new Error(
-        `HTTP Error: ${response.status} - Failed to fetch data from ${graphqlUrl}`
-      );
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
+    const cfData = await response.json();
+    const ccDetails = cfData?.data?.creditCardContainerByPath?.item;
 
-    // You would typically process the fetched data here.
-    const data = await response.json();
-    // For now, log the fetched data to avoid unused variable error.
-    console.log('Fetched data:', data);
+    if (ccDetails) {
+      const headingContainer = document.createElement('div');
+      headingContainer.className = 'heading-wrapper';
+      headingContainer.textContent = 'Your Card Options';
+
+      block.prepend(headingContainer);
+
+      renderContent(block, ccDetails, children);
+    } else {
+      console.error('No credit card details found in content fragment.');
+    }
   } catch (error) {
-    // Handle error appropriately (e.g., display to user, send to logging service)
-    // Optionally, you can throw the error or handle it as needed:
-    // throw error;
+    console.error('Error fetching data:', error);
   }
 }
