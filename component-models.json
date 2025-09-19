@@ -244,7 +244,7 @@
         "label": "Heading Text"
       },
       {
-        "component": "aem-content",
+        "component": "aem-container",
         "name": "cf-settings",
         "label": "Content Fragment Settings",
         "fields": [
