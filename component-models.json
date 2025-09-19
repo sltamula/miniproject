@@ -244,27 +244,32 @@
         "label": "Heading Text"
       },
       {
-        "component": "container",
+        "component": "aem-content-fragment",
         "name": "contentFragmentItems",
         "label": "Content Fragment Items",
-        "valueType": "string",
-        "collapsible": true,
-        "multi": true,
         "fields": [
           {
-            "component": "aem-content-fragment",
-            "name": "contentFragmentReference",
-            "label": "Content Fragment Path"
-          },
-          {
-            "component": "text",
-            "name": "linkText",
-            "label": "Button Text"
-          },
-          {
-            "component": "aem-content",
-            "name": "link",
-            "label": "Link Path"
+            "component": "container",
+            "valueType": "string",
+            "collapsible": true,
+            "multi": true,
+            "fields": [
+              {
+                "component": "aem-content-fragment",
+                "name": "contentFragmentReference",
+                "label": "Content Fragment Path"
+              },
+              {
+                "component": "text",
+                "name": "linkText",
+                "label": "Button Text"
+              },
+              {
+                "component": "aem-content",
+                "name": "link",
+                "label": "Link Path"
+              }
+            ]
           }
         ]
       }
