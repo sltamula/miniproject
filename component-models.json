@@ -244,24 +244,24 @@
         "label": "Heading Text"
       },
       {
-        "component": "aem-container",
-        "name": "cf-settings",
-        "label": "Content Fragment Settings",
+        "component": "text",
+        "name": "linkText",
+        "label": "Button Text"
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Path"
+      },
+      {
+        "component": "list",
+        "name": "producList",
+        "label": "Product Items",
         "fields": [
           {
             "component": "aem-content-fragment",
             "name": "reference",
             "label": "Content Fragment Reference"
-          },
-          {
-            "component": "text",
-            "name": "linkText",
-            "label": "Button Text"
-          },
-          {
-            "component": "aem-content",
-            "name": "link",
-            "label": "Path"
           }
         ]
       }
