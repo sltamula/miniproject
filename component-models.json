@@ -255,13 +255,13 @@
       },
       {
         "component": "list",
-        "name": "producList",
-        "label": "Product Items",
+        "name": "contentItems",
+        "label": "Content Items",
         "fields": [
           {
-            "component": "aem-content-fragment",
-            "name": "reference",
-            "label": "Content Fragment Reference"
+            "component": "aem-content",
+            "name": "contentReference",
+            "label": "AEM Content Path"
           }
         ]
       }
