@@ -262,8 +262,7 @@
           {
             "component": "aem-content",
             "name": "contentReference",
-            "label": "AEM Content Path",
-            "multi": true
+            "label": "AEM Content Path"
           }
         ]
       }
