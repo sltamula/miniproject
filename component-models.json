@@ -244,7 +244,7 @@
         "label": "Heading Text"
       },
       {
-        "component": "list",
+        "component": "container",
         "name": "contentFragmentItems",
         "label": "Content Fragment Items",
         "fields": [
