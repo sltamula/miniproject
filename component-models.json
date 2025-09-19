@@ -244,9 +244,11 @@
         "label": "Heading Text"
       },
       {
-        "component": "list",
+        "component": "container",
         "name": "contentFragmentItems",
         "label": "Content Fragment Items",
+        "valueType": "string",
+        "collapsible": true,
         "multi": true,
         "fields": [
           {
