@@ -247,6 +247,7 @@
         "component": "container",
         "name": "contentFragmentItems",
         "label": "Content Fragment Items",
+        "multi": true,
         "fields": [
           {
                 "component": "aem-content-fragment",
