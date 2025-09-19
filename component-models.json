@@ -244,17 +244,11 @@
         "label": "Heading Text"
       },
       {
-        "component": "aem-content-fragment",
+        "component": "list",
         "name": "contentFragmentItems",
         "label": "Content Fragment Items",
         "fields": [
           {
-            "component": "container",
-            "valueType": "string",
-            "collapsible": true,
-            "multi": true,
-            "fields": [
-              {
                 "component": "aem-content-fragment",
                 "name": "contentFragmentReference",
                 "label": "Content Fragment Path"
