@@ -239,19 +239,29 @@
     "id": "product-list",
     "fields": [
       {
-        "component": "tab-container",
+        "component": "text",
+        "name": "headingText",
+        "label": "Heading Text"
+      },
+      {
+        "component": "aem-content",
         "name": "cf-settings",
         "label": "Content Fragment Settings",
         "fields": [
           {
-            "component": "aem-content",
+            "component": "aem-content-fragment",
             "name": "reference",
             "label": "Content Fragment Reference"
           },
           {
+            "component": "aem-content",
+            "name": "link",
+            "label": "Path"
+          },
+          {
             "component": "text",
-            "name": "headingText",
-            "label": "Heading Text"
+            "name": "linkText",
+            "label": "Button Text"
           }
         ]
       }
