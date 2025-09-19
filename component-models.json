@@ -250,26 +250,19 @@
         "multi": true,
         "fields": [
           {
-            "component": "container",
-            "name": "contentFragment",
-            "label": "Content Fragment",
-            "fields": [
-              {
-                "component": "aem-content-fragment",
-                "name": "contentFragmentReference",
-                "label": "Content Fragment Path"
-              },
-              {
-                "component": "text",
-                "name": "linkText",
-                "label": "Button Text"
-              },
-              {
-                "component": "aem-content",
-                "name": "link",
-                "label": "Link Path"
-              }
-            ]
+            "component": "aem-content-fragment",
+            "name": "contentFragmentReference",
+            "label": "Content Fragment Path"
+          },
+          {
+            "component": "text",
+            "name": "linkText",
+            "label": "Button Text"
+          },
+          {
+            "component": "aem-content",
+            "name": "link",
+            "label": "Link Path"
           }
         ]
       }
