@@ -36,23 +36,23 @@ export default async function decorate(block) {
 
       const image = document.createElement('img');
       image.src = ccDetails.image._path;
-      image.className('credit-card__image');
+      image.className = 'credit-card__image';
 
       const name = document.createElement('h3');
       name.textContent = ccDetails.name;
-      name.className('credit-card__name');
+      name.className = 'credit-card__name';
 
       const description = document.createElement('div');
       description.innerHTML = ccDetails.description.html;
-      description.className('credit-card__description');
+      description.className = 'credit-card__description';
 
       const features = document.createElement('div');
       features.innerHTML = ccDetails.cardFeatures.html;
-      features.className('credit-card__features');
+      features.className = 'credit-card__features';
 
       const benefits = document.createElement('div');
       benefits.innerHTML = ccDetails.cardBenefits.html;
-      benefits.className('credit-card__benefits');
+      benefits.className = 'credit-card__benefits';
 
       const buttonLink = document.createElement('a');
       buttonLink.href = authoredLink || '#';
