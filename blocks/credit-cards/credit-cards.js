@@ -96,7 +96,7 @@ export default function decorate(block) {
         getContentFragmentDetails(block, cfPath);
       }
     });
-    // parentDivContainer.append(li);
+    parentDivContainer.append(li);
   });
   block.textContent = '';
   block.append(parentDivContainer);
