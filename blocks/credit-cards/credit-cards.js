@@ -99,8 +99,7 @@ export default function decorate(block) {
       if (notAButton) {
         li.appendChild(divContainer);
       } else {
-        const parentDiv = document.querySelector('div');
-        const cfPath = parentDiv.querySelector('a')?.title;
+        const cfPath = divContainer.querySelector('a')?.title;
         getContentFragmentDetails(li, cfPath);
       }
     });
