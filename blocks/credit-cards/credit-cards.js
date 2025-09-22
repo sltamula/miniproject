@@ -9,8 +9,6 @@ export default function decorate(block) {
     const li = document.createElement('div');
     moveInstrumentation(row, li);
     while (row.firstElementChild) li.append(row.firstElementChild);
-
-    cardContainer.append(li);
   });
   block.textContent = '';
   block.append(cardContainer);
