@@ -1,3 +1,6 @@
+import { createOptimizedPicture } from '../../scripts/aem.js';
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
 const API_ENDPOINT = 'https://author-p9606-e71941.adobeaemcloud.com/graphql/execute.json/miniproject/getCreditCardDetails';
 
 /**
@@ -10,90 +13,47 @@ function createButton(container, path, text) {
   const buttonLink = document.createElement('a');
   buttonLink.href = path || '#';
   buttonLink.textContent = text || 'Learn More';
-  buttonLink.className = 'button';
+  buttonLink.classList.add('button');
 
-  const btnDiv = document.createElement('div');
-  btnDiv.className = 'btn';
-  btnDiv.append(buttonLink);
+  const buttonDiv = document.createElement('div');
+  buttonDiv.className = 'btn-wrapper';
   
-  const btnWrapper = document.createElement('div');
-  btnWrapper.className = 'btn-wrapper';
-  btnWrapper.append(btnDiv);
-
-  container.append(btnWrapper);
+  const newButtonDiv = document.createElement('div');
+  newButtonDiv.className = 'btn';
+  newButtonDiv.append(buttonLink);
+  buttonDiv.append(newButtonDiv);
+  container.append(buttonDiv);
 }
 
 /**
- * Renders the credit card details and a button.
- * @param {HTMLElement} block The main block element.
+ * Renders a single credit card item.
  * @param {object} details The fetched credit card details.
- * @param {HTMLElement[]} children An array of the block's children elements.
+ * @param {HTMLElement} contentDiv The element to append content to.
  */
-function renderContent(block, details, children) {
-  // Clear existing content from the block
-  block.innerHTML = '';
-
-  const [linkDiv, buttonTextDiv] = children;
-  const authoredButtonText = linkDiv?.textContent.trim();
-  const authoredLink = children[1]?.querySelector('a')?.href;
-
-  // Create card container
-  const cardContainer = document.createElement('div');
-  cardContainer.className = 'credit-card__container';
-
-  const cardBodyContainer = document.createElement('div');
-  cardBodyContainer.className = 'credit-card__body';
-
-  // Create and append card details
-  const elementsToCreate = [
-    { tag: 'img', src: details.image._path, className: 'credit-card__image' },
-    { tag: 'h3', textContent: details.name, className: 'credit-card__name' },
-    {
-      tag: 'div',
-      innerHTML: details.description.html,
-      className: 'credit-card__description',
-    },
-    {
-      tag: 'div',
-      innerHTML: details.cardFeatures.html,
-      className: 'credit-card__features',
-    },
-    {
-      tag: 'div',
-      innerHTML: details.cardBenefits.html,
-      className: 'credit-card__benefits',
-    },
-  ];
-
-  elementsToCreate.forEach(
-    ({ tag, src, textContent, innerHTML, className }) => {
-      const element = document.createElement(tag);
-
-      if (src) element.src = src;
-      if (textContent) element.textContent = textContent;
-      if (innerHTML) element.innerHTML = innerHTML;
-      if (className) element.className = className;
-
-      // Append the image to the main container, everything else to the body
-      if (tag === 'img') {
-        cardContainer.appendChild(element);
-      } else {
-        cardBodyContainer.appendChild(element);
-      }
-    }
-  );
-
-  // Append the populated card body to the main card container
-  cardContainer.appendChild(cardBodyContainer);
-
-  // Handle button generation
-  createButton(cardContainer, authoredLink, authoredButtonText);
-
-  // Append the card container to the block
-  block.appendChild(cardContainer);
+function renderCardItem(details, contentDiv) {
+  const picture = createOptimizedPicture(details.image._path, details.name, false, [{ width: '750' }]);
   
-  // Hide the original divs
-  children.forEach(child => child.style.display = 'none');
+  const cardImageDiv = document.createElement('div');
+  cardImageDiv.className = 'cards-card-image';
+  cardImageDiv.append(picture);
+  
+  const cardBodyDiv = document.createElement('div');
+  cardBodyDiv.className = 'cards-card-body';
+
+  const heading = document.createElement('h3');
+  heading.textContent = details.name;
+
+  const description = document.createElement('div');
+  description.innerHTML = details.description.html;
+
+  const features = document.createElement('div');
+  features.innerHTML = details.cardFeatures.html;
+
+  const benefits = document.createElement('div');
+  benefits.innerHTML = details.cardBenefits.html;
+  
+  cardBodyDiv.append(heading, description, features, benefits);
+  contentDiv.append(cardImageDiv, cardBodyDiv);
 }
 
 /**
@@ -101,14 +61,18 @@ function renderContent(block, details, children) {
  * @param {HTMLElement} block The block element.
  */
 export default async function decorate(block) {
+  const ul = document.createElement('ul');
   const children = [...block.children];
-  const cfPath = children[0]?.querySelector('a')?.title;
 
+  const cfPath = children[0]?.querySelector('a')?.title;
+  const authoredButtonText = children[1]?.textContent.trim();
+  const authoredLink = children[1]?.querySelector('a')?.href;
+  
   if (!cfPath) {
     console.error('Content fragment path not found.');
     return;
   }
-
+  
   const url = `${API_ENDPOINT};path=${cfPath}`;
 
   try {
@@ -120,4 +84,24 @@ export default async function decorate(block) {
     const ccDetails = cfData?.data?.creditCardContainerByPath?.item;
 
     if (ccDetails) {
-      renderContent(block, ccDetails
+      const li = document.createElement('li');
+      renderCardItem(ccDetails, li);
+      
+      const buttonWrapper = document.createElement('div');
+      createButton(buttonWrapper, authoredLink, authoredButtonText);
+      li.append(buttonWrapper);
+
+      ul.append(li);
+    } else {
+      console.error('No credit card details found in content fragment.');
+    }
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+
+  // Hide the original divs.
+  children.forEach(child => child.remove());
+
+  // Append the new structure to the block.
+  block.append(ul);
+}
