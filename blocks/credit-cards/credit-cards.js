@@ -12,8 +12,10 @@ export default function decorate(block) {
       li.append(row.firstElementChild);
     }
     [...li.children].forEach(div => {
-      const parentDiv = document.querySelector('div');
-      const cfPath = parentDiv.querySelector('a')?.title;
+      if (div.children.length === 1) {
+        const parentDiv = document.querySelector('div');
+        const cfPath = parentDiv.querySelector('a')?.title;
+      }
     });
   });
   block.textContent = '';
