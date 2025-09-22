@@ -23,6 +23,7 @@ async function getContentFragmentDetails(cfPath) {
     return ccDetails;
   } catch (error) {
     console.error('Error fetching data:', error);
+    return null;
   }
 }
 
