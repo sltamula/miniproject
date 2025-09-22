@@ -1,12 +1,10 @@
-import { moveInstrumentation } from '../../scripts/scripts.js';
+const API_ENDPOINT =
+  'https://author-p9606-e71941.adobeaemcloud.com/graphql/execute.json/miniproject/getCreditCardDetails';
 
-function getContentFragmentDetails(cfPath) {
-  const API_ENDPOINT =
-    'https://author-p9606-e71941.adobeaemcloud.com/graphql/execute.json/miniproject/getCreditCardDetails';
-
+async function getContentFragmentDetails(cfPath) {
   if (!cfPath) {
     console.error('Content fragment path not found.');
-    return;
+    return null;
   }
 
   const url = `${API_ENDPOINT};path=${cfPath}`;
@@ -19,19 +17,13 @@ function getContentFragmentDetails(cfPath) {
     const cfData = await response.json();
     const ccDetails = cfData?.data?.creditCardContainerByPath?.item;
 
-    if (ccDetails) {
-      const headingContainer = document.createElement('div');
-      headingContainer.className = 'heading-wrapper';
-      headingContainer.textContent = 'Your Card Options';
-
-      block.prepend(headingContainer);
-
-      renderContent(block, ccDetails, children);
-    } else {
+    if (!ccDetails) {
       console.error('No credit card details found in content fragment.');
     }
+    return ccDetails;
   } catch (error) {
     console.error('Error fetching data:', error);
+    return null;
   }
 }
 
