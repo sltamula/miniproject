@@ -3,25 +3,20 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   /* change to ul, li */
-  const ul = document.createElement('ul');
+  const cardContainer = document.createElement('div');
+  cardContainer.className = 'credit-card__container';
+
   [...block.children].forEach(row => {
     const li = document.createElement('li');
-    moveInstrumentation(row, li);
+
     while (row.firstElementChild) li.append(row.firstElementChild);
     [...li.children].forEach(div => {
       if (div.children.length === 1) {
         console.log('Hello');
       }
     });
-    ul.append(li);
-  });
-  ul.querySelectorAll('picture > img').forEach(img => {
-    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [
-      { width: '750' },
-    ]);
-    moveInstrumentation(img, optimizedPic.querySelector('img'));
-    img.closest('picture').replaceWith(optimizedPic);
+    cardContainer.append(li);
   });
   block.textContent = '';
-  block.append(ul);
+  block.append(cardContainer);
 }
