@@ -8,13 +8,11 @@ export default function decorate(block) {
   [...block.children].forEach(row => {
     const li = document.createElement('div');
     moveInstrumentation(row, li);
-    while (row.firstElementChild) {
-      li.append(row.firstElementChild);
-    }
+    while (row.firstElementChild) li.append(row.firstElementChild);
     [...li.children].forEach(divContainer => {
       if (divContainer.children.length === 1) {
-        const parentDiv = document.querySelector('div');
-        const cfPath = parentDiv.querySelector('a')?.title;
+        // const parentDiv = document.querySelector('div');
+        // const cfPath = parentDiv.querySelector('a')?.title;
       }
     });
   });
