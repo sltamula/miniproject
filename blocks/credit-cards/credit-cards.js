@@ -97,7 +97,7 @@ export default function decorate(block) {
         ?.getAttribute('data-aue-prop');
 
       if (notAButton) {
-        li.append(divContainer);
+        li.appendChild(divContainer);
       } else {
         const parentDiv = document.querySelector('div');
         const cfPath = parentDiv.querySelector('a')?.title;
