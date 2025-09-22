@@ -1,14 +1,19 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
-alert('Hello');
-
 const API_ENDPOINT =
   'https://author-p9606-e71941.adobeaemcloud.com/graphql/execute.json/miniproject/getCreditCardDetails';
 
 export default function decorate(block) {
   const children = [...block.children];
   const cfPath = children[0].querySelector('a')?.title;
+
+  if (!cfPath) {
+    console.error('Content fragment path not found.');
+    return;
+  }
+
+  const url = `${API_ENDPOINT};path=${cfPath}`;
 
   /* change to ul, li */
   const ul = document.createElement('ul');
