@@ -1,29 +1,37 @@
 const API_ENDPOINT =
   'https://author-p9606-e71941.adobeaemcloud.com/graphql/execute.json/miniproject/getCreditCardDetails';
 
+/**
+ * Creates and appends a button to a container.
+ * @param {HTMLElement} container The element to append the button to.
+ * @param {string} path The href path for the button link.
+ * @param {string} text The text content for the button.
+ */
 function createButton(container, path, text) {
   const buttonLink = document.createElement('a');
   buttonLink.href = path || '#';
   buttonLink.textContent = text || 'Learn More';
   buttonLink.classList.add('button');
 
-  const buttonDiv = document.createElement('div');
-  buttonDiv.className = 'btn-wrapper';
-  container.append(buttonDiv);
-
   const newButtonDiv = document.createElement('div');
-  newButtonDiv.className = 'btn';
   newButtonDiv.append(buttonLink);
-  buttonDiv.append(newButtonDiv);
+  container.append(newButtonDiv);
 }
 
+/**
+ * Renders the credit card details and a button.
+ * @param {HTMLElement} block The main block element.
+ * @param {object} details The fetched credit card details.
+ * @param {HTMLElement[]} children An array of the block's children elements.
+ */
 function renderContent(block, details, children) {
   // Clear existing content from the block
   block.innerHTML = '';
 
-  const [block, linkDiv, buttonTextDiv] = children;
+  const [, linkDiv, buttonTextDiv] = children;
   const authoredButtonText = linkDiv.textContent.trim();
   const authoredLink = children[1].querySelector('a')?.href;
+  const cfPath = children[0].querySelector('a')?.title;
 
   // Create card container
   const cardContainer = document.createElement('div');
@@ -55,24 +63,23 @@ function renderContent(block, details, children) {
 
   elementsToCreate.forEach(
     ({ tag, src, textContent, innerHTML, className }) => {
+      // const element = document.createElement(tag);
+      // if (src) element.src = src;
+      // if (textContent) element.textContent = textContent;
+      // if (innerHTML) element.innerHTML = innerHTML;
+      // if (className) element.className = className;
+
       const element = document.createElement(tag);
-
-      if (src) element.src = src;
-      if (textContent) element.textContent = textContent;
-      if (innerHTML) element.innerHTML = innerHTML;
-      if (className) element.className = className;
-
-      // Append the image to the main container, everything else to the body
-      if (tag === 'img') {
-        cardContainer.appendChild(element);
-      } else {
+      if (className && className !== 'credit-card__image') {
+        element.src = src;
+        element.textContent = textContent;
+        element.innerHTML = innerHTML;
+        element.className = className;
         cardBodyContainer.appendChild(element);
       }
+      cardContainer.appendChild(element);
     }
   );
-
-  // Append the populated card body to the main card container
-  cardContainer.appendChild(cardBodyContainer);
 
   // Handle button generation
   createButton(cardContainer, authoredLink, authoredButtonText);
