@@ -1,9 +1,6 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 function renderContent(block, ccDetails) {
-  // Clear existing content from the block
-  block.innerHTML = '';
-
   // Create card container
   const cardContainer = document.createElement('div');
   cardContainer.className = 'credit-card__container';
@@ -93,10 +90,9 @@ export default function decorate(block) {
       if (divContainer.children.length === 1) {
         const parentDiv = document.querySelector('div');
         const cfPath = parentDiv.querySelector('a')?.title;
-        getContentFragmentDetails(block, cfPath);
+        getContentFragmentDetails(parentDivContainer, cfPath);
       }
     });
-    parentDivContainer.append(li);
   });
   block.textContent = '';
   block.append(parentDivContainer);
