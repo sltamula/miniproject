@@ -8,12 +8,12 @@ export default function decorate(block) {
   [...block.children].forEach(row => {
     const li = document.createElement('div');
     moveInstrumentation(row, li);
-    while (row.firstElementChild) li.append(row.firstElementChild);
-    [...li.children].forEach(div => {
-      if (div.children.length === 1) {
-        console.log('Hello');
-      }
-    });
+    // while (row.firstElementChild) li.append(row.firstElementChild);
+    // [...li.children].forEach(div => {
+    //   if (div.children.length === 1) {
+    //     console.log('Hello');
+    //   }
+    // });
     cardContainer.append(li);
   });
   block.textContent = '';
