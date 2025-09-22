@@ -6,15 +6,15 @@ export default function decorate(block) {
   cardContainer.className = 'credit-card__container';
 
   [...block.children].forEach(row => {
-    const li = document.createElement('li');
-    //moveInstrumentation(row, li);
-    while (row.firstElementChild) li.append(row.firstElementChild);
-    [...li.children].forEach(div => {
+    const divContainer = document.createElement('div');
+    moveInstrumentation(row, divContainer);
+    while (row.firstElementChild) divContainer.append(row.firstElementChild);
+    [...divContainer.children].forEach(div => {
       if (div.children.length === 1) {
         console.log('Hello');
       }
     });
-    cardContainer.append(li);
+    cardContainer.append(divContainer);
   });
   block.textContent = '';
   block.append(cardContainer);
