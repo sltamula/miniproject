@@ -8,7 +8,7 @@ export default function decorate(block) {
   [...block.children].forEach(row => {
     const li = document.createElement('li');
     moveInstrumentation(row, li);
-    while (row.firstElementChild) divContainer.append(row.firstElementChild);
+    while (row.firstElementChild) li.append(row.firstElementChild);
     [...li.children].forEach(div => {
       if (div.children.length === 1) {
         console.log('Hello');
