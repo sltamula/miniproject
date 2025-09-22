@@ -87,9 +87,10 @@ export default function decorate(block) {
 
   [...block.children].forEach(row => {
     const li = document.createElement('div');
+    const templi = document.createElement('div');
     moveInstrumentation(row, li);
-    //while (row.firstElementChild) li.append(row.firstElementChild);
-    [...row.children].forEach(divContainer => {
+    while (row.firstElementChild) templi.append(row.firstElementChild);
+    [...templi.children].forEach(divContainer => {
       if (divContainer.children.length === 1) {
         const parentDiv = document.querySelector('div');
         const cfPath = parentDiv.querySelector('a')?.title;
