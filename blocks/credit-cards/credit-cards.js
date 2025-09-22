@@ -11,8 +11,8 @@ export default function decorate(block) {
     while (row.firstElementChild) {
       li.append(row.firstElementChild);
     }
-    [...li.children].forEach(div => {
-      if (div.children.length === 1) {
+    [...li.children].forEach(divContainer => {
+      if (divContainer.children.length === 1) {
         const parentDiv = document.querySelector('div');
         const cfPath = parentDiv.querySelector('a')?.title;
       }
