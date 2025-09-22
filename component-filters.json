@@ -13,9 +13,7 @@
       "hero",
       "cards",
       "columns",
-      "fragment",
-      "credit-card-product",
-      "product-list"
+      "fragment"
     ]
   },
   {
@@ -29,5 +27,9 @@
   {
     "id": "column",
     "components": ["text", "image", "button", "title"]
+  },
+  {
+    "id": "product-list",
+    "components": ["credit-card-product"]
   }
 ]
