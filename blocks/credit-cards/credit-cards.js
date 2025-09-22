@@ -91,7 +91,14 @@ export default function decorate(block) {
     moveInstrumentation(row, li);
     while (row.firstElementChild) templi.append(row.firstElementChild);
     [...templi.children].forEach(divContainer => {
-      if (divContainer.children.length === 1) {
+      if (divContainer.children.length !== 1) return;
+      const notAButton = divContainer
+        .querySelector('a')
+        ?.getAttribute('data-aue-prop');
+
+      if (notAButton) {
+        li.append(divContainer);
+      } else {
         const parentDiv = document.querySelector('div');
         const cfPath = parentDiv.querySelector('a')?.title;
         getContentFragmentDetails(li, cfPath);
