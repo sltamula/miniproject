@@ -1,8 +1,20 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
-import { moveInstrumentation } from '../../scripts/scripts.js';
-
 const API_ENDPOINT =
   'https://author-p9606-e71941.adobeaemcloud.com/graphql/execute.json/miniproject/getCreditCardDetails';
+
+/**
+ * Creates an optimized picture element with the specified source and alt text.
+ * @param {string} src The image source path.
+ * @param {string} alt The image alt text.
+ * @returns {HTMLPictureElement} The optimized picture element.
+ */
+function createOptimizedPicture(src, alt) {
+  const picture = document.createElement('picture');
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = alt;
+  picture.append(img);
+  return picture;
+}
 
 /**
  * Entry point for the block decoration.
@@ -10,14 +22,9 @@ const API_ENDPOINT =
  */
 export default async function decorate(block) {
   const children = [...block.children];
-
   const cfPath = children[0]?.querySelector('a')?.title;
-  const buttonTextDiv = children[1];
-  const authoredButtonText = buttonTextDiv?.textContent.trim();
+  const authoredButtonText = children[1]?.textContent.trim();
   const authoredLink = children[1]?.querySelector('a')?.href;
-
-  // Clear the original HTML from the block
-  block.textContent = '';
 
   if (!cfPath) {
     console.error('Content fragment path not found.');
@@ -35,54 +42,40 @@ export default async function decorate(block) {
     const ccDetails = cfData?.data?.creditCardContainerByPath?.item;
 
     if (ccDetails) {
+      block.innerHTML = '';
       const cardContainer = document.createElement('div');
       cardContainer.className = 'credit-card__container';
 
       const image = createOptimizedPicture(
         ccDetails.image._path,
-        ccDetails.name,
-        false,
-        [{ width: '750' }]
+        ccDetails.name
       );
-      const cardImageDiv = document.createElement('div');
-      cardImageDiv.className = 'credit-card__image';
-      cardImageDiv.append(image);
 
-      const cardBodyDiv = document.createElement('div');
-      cardBodyDiv.className = 'credit-card__body';
+      const heading = document.createElement('h3');
+      heading.textContent = ccDetails.name;
 
-      // Create and append card details using a single append call
-      const nameHeading = document.createElement('h3');
-      nameHeading.className = 'credit-card__name';
-      nameHeading.textContent = ccDetails.name;
+      const description = document.createElement('div');
+      description.innerHTML = ccDetails.description.html;
 
-      const descriptionDiv = document.createElement('div');
-      descriptionDiv.className = 'credit-card__description';
-      descriptionDiv.innerHTML = ccDetails.description.html;
+      const features = document.createElement('div');
+      features.innerHTML = ccDetails.cardFeatures.html;
 
-      const featuresDiv = document.createElement('div');
-      featuresDiv.className = 'credit-card__features';
-      featuresDiv.innerHTML = ccDetails.cardFeatures.html;
-
-      const benefitsDiv = document.createElement('div');
-      benefitsDiv.className = 'credit-card__benefits';
-      benefitsDiv.innerHTML = ccDetails.cardBenefits.html;
-
-      cardBodyDiv.append(nameHeading, descriptionDiv, featuresDiv, benefitsDiv);
+      const benefits = document.createElement('div');
+      benefits.innerHTML = ccDetails.cardBenefits.html;
 
       const buttonLink = document.createElement('a');
-      buttonLink.className = 'button';
       buttonLink.href = authoredLink || '#';
       buttonLink.textContent = authoredButtonText || 'Learn More';
+      buttonLink.classList.add('button');
 
-      const buttonWrapper = document.createElement('div');
-      buttonWrapper.className = 'btn-wrapper';
-      buttonWrapper.append(buttonLink);
-
-      // Append all parts to the card container
-      cardContainer.append(cardImageDiv, cardBodyDiv, buttonWrapper);
-
-      // Append the final container to the block
+      cardContainer.append(
+        image,
+        heading,
+        description,
+        features,
+        benefits,
+        buttonLink
+      );
       block.append(cardContainer);
     } else {
       console.error('No credit card details found in content fragment.');
