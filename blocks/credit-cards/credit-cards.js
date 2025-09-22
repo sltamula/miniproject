@@ -13,9 +13,14 @@ function createButton(container, path, text) {
   buttonLink.textContent = text || 'Learn More';
   buttonLink.classList.add('button');
 
+  const buttonDiv = document.createElement('div');
+  buttonDiv.className = 'btn-wrapper';
+  container.append(buttonDiv);
+
   const newButtonDiv = document.createElement('div');
+  newButtonDiv.className = 'btn';
   newButtonDiv.append(buttonLink);
-  container.append(newButtonDiv);
+  buttonDiv.append(newButtonDiv);
 }
 
 /**
@@ -31,7 +36,6 @@ function renderContent(block, details, children) {
   const [, linkDiv, buttonTextDiv] = children;
   const authoredButtonText = linkDiv.textContent.trim();
   const authoredLink = children[1].querySelector('a')?.href;
-  const cfPath = children[0].querySelector('a')?.title;
 
   // Create card container
   const cardContainer = document.createElement('div');
@@ -63,23 +67,24 @@ function renderContent(block, details, children) {
 
   elementsToCreate.forEach(
     ({ tag, src, textContent, innerHTML, className }) => {
-      // const element = document.createElement(tag);
-      // if (src) element.src = src;
-      // if (textContent) element.textContent = textContent;
-      // if (innerHTML) element.innerHTML = innerHTML;
-      // if (className) element.className = className;
-
       const element = document.createElement(tag);
-      if (className && className !== 'credit-card__image') {
-        element.src = src;
-        element.textContent = textContent;
-        element.innerHTML = innerHTML;
-        element.className = className;
+
+      if (src) element.src = src;
+      if (textContent) element.textContent = textContent;
+      if (innerHTML) element.innerHTML = innerHTML;
+      if (className) element.className = className;
+
+      // Append the image to the main container, everything else to the body
+      if (tag === 'img') {
+        cardContainer.appendChild(element);
+      } else {
         cardBodyContainer.appendChild(element);
       }
-      cardContainer.appendChild(element);
     }
   );
+
+  // Append the populated card body to the main card container
+  cardContainer.appendChild(cardBodyContainer);
 
   // Handle button generation
   createButton(cardContainer, authoredLink, authoredButtonText);
@@ -116,6 +121,12 @@ export default async function decorate(block) {
     const ccDetails = cfData?.data?.creditCardContainerByPath?.item;
 
     if (ccDetails) {
+      const headingContainer = document.createElement('div');
+      headingContainer.className = 'heading-wrapper';
+      headingContainer.textContent = 'Your Card Options';
+
+      block.prepend(headingContainer);
+
       renderContent(block, ccDetails, children);
     } else {
       console.error('No credit card details found in content fragment.');
