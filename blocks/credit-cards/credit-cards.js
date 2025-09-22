@@ -1,7 +1,7 @@
-async function getContentFragmentDetails(cfPath) {
-  const API_ENDPOINT =
-    'https://author-p9606-e71941.adobeaemcloud.com/graphql/execute.json/miniproject/getCreditCardDetails';
+const API_ENDPOINT =
+  'https://author-p9606-e71941.adobeaemcloud.com/graphql/execute.json/miniproject/getCreditCardDetails';
 
+async function getContentFragmentDetails(cfPath) {
   if (!cfPath) {
     console.error('Content fragment path not found.');
     return null;
@@ -27,14 +27,30 @@ async function getContentFragmentDetails(cfPath) {
   }
 }
 
-export default function decorate(block) {
-  /* change to ul, li */
-  const ul = document.createElement('ul');
+export default async function decorate(block) {
   const children = [...block.children];
-  children.forEach(row => {
-    const cfPath = children[0].querySelector('a')?.title;
-    getContentFragmentDetails(cfPath);
+
+  // Map each child to a Promise that fetches content fragment details.
+  const promises = children.map(row => {
+    const cfPath = row.querySelector('a')?.title;
+    return getContentFragmentDetails(cfPath);
   });
+
+  // Await all promises to resolve concurrently.
+  const detailsArray = await Promise.all(promises);
+
+  const ul = document.createElement('ul');
+
+  // Filter out any null values and map the results to <li> elements.
+  detailsArray
+    .filter(details => details)
+    .forEach(details => {
+      const li = document.createElement('li');
+      li.textContent = details.name;
+      ul.append(li);
+    });
+
+  // Clear existing content and append the new list.
   block.textContent = '';
   block.append(ul);
 }
