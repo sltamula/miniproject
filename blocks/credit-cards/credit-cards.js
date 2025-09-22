@@ -34,41 +34,58 @@ export default async function decorate(block) {
       const cardBodyContainer = document.createElement('div');
       cardBodyContainer.className = 'credit-card__body';
 
-      const image = document.createElement('img');
-      image.src = ccDetails.image._path;
-      image.className = 'credit-card__image';
+      // Create and append card details
+      const elementsToCreate = [
+        {
+          tag: 'img',
+          src: ccDetails.image._path,
+          className: 'credit-card__image',
+        },
+        {
+          tag: 'h3',
+          textContent: ccDetails.name,
+          className: 'credit-card__name',
+        },
+        {
+          tag: 'div',
+          innerHTML: ccDetails.description.html,
+          className: 'credit-card__description',
+        },
+        {
+          tag: 'div',
+          innerHTML: ccDetails.cardFeatures.html,
+          className: 'credit-card__features',
+        },
+        {
+          tag: 'div',
+          innerHTML: ccDetails.cardBenefits.html,
+          className: 'credit-card__benefits',
+        },
+      ];
 
-      const name = document.createElement('h3');
-      name.textContent = ccDetails.name;
-      name.className = 'credit-card__name';
+      elementsToCreate.forEach(
+        ({ tag, src, textContent, innerHTML, className }) => {
+          const element = document.createElement(tag);
 
-      const description = document.createElement('div');
-      description.innerHTML = ccDetails.description.html;
-      description.className = 'credit-card__description';
+          if (src) element.src = src;
+          if (textContent) element.textContent = textContent;
+          if (innerHTML) element.innerHTML = innerHTML;
+          if (className) element.className = className;
 
-      const features = document.createElement('div');
-      features.innerHTML = ccDetails.cardFeatures.html;
-      features.className = 'credit-card__features';
-
-      const benefits = document.createElement('div');
-      benefits.innerHTML = ccDetails.cardBenefits.html;
-      benefits.className = 'credit-card__benefits';
-
-      const buttonLink = document.createElement('a');
-      buttonLink.href = authoredLink || '#';
-      buttonLink.textContent = authoredButtonText || 'Learn More';
-      buttonLink.classList.add('button');
-
-      cardBodyContainer.append(
-        name,
-        description,
-        features,
-        benefits,
-        buttonLink
+          // Append the image to the main container, everything else to the body
+          if (tag === 'img') {
+            cardContainer.appendChild(element);
+          } else {
+            cardBodyContainer.appendChild(element);
+          }
+        }
       );
 
-      cardContainer.append(image, cardBodyContainer);
-      block.append(cardContainer);
+      // Append the populated card body to the main card container
+      cardContainer.appendChild(cardBodyContainer);
+
+      // Append the card container to the block
+      block.appendChild(cardContainer);
     } else {
       console.error('No credit card details found in content fragment.');
     }
