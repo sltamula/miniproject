@@ -1,7 +1,7 @@
-const API_ENDPOINT =
-  'https://author-p9606-e71941.adobeaemcloud.com/graphql/execute.json/miniproject/getCreditCardDetails';
-
 async function getContentFragmentDetails(cfPath) {
+  const API_ENDPOINT =
+    'https://author-p9606-e71941.adobeaemcloud.com/graphql/execute.json/miniproject/getCreditCardDetails';
+
   if (!cfPath) {
     console.error('Content fragment path not found.');
     return null;
@@ -27,12 +27,14 @@ async function getContentFragmentDetails(cfPath) {
   }
 }
 
-export default async function decorate(block) {
+export default function decorate(block) {
+  /* change to ul, li */
+  const ul = document.createElement('ul');
   const children = [...block.children];
-
-  // Map each child to a Promise that fetches content fragment details.
-  const promises = children.map(row => {
-    const cfPath = row.querySelector('a')?.title;
-    return getContentFragmentDetails(cfPath);
+  children.forEach(row => {
+    const cfPath = children[0].querySelector('a')?.title;
+    getContentFragmentDetails(cfPath);
   });
+  block.textContent = '';
+  block.append(ul);
 }
