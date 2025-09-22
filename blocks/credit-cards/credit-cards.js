@@ -5,12 +5,12 @@ export default function decorate(block) {
   const cardContainer = document.createElement('div');
   cardContainer.className = 'credit-card__container';
 
-  [...block.children].forEach(row => {
+  [...block.children].forEach(child => {
     const li = document.createElement('div');
-    moveInstrumentation(row, li);
-    // while (row.firstElementChild) li.append(row.firstElementChild);
-    [...li.children].forEach(div => {
-      if (div.children.length === 1) {
+    moveInstrumentation(child, li);
+    while (row.firstElementChild) li.append(row.firstElementChild);
+    [...li.children].forEach(divContainer => {
+      if (divContainer.children.length === 1) {
         const parentDiv = document.querySelector('div');
         const cfPath = parentDiv.querySelector('a')?.title;
       }
