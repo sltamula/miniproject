@@ -4,7 +4,7 @@ export default function decorate(block) {
   const children = [...block.children];
   children.forEach(row => {
     const cfPath = children[0].querySelector('a')?.title;
-    getContentFragmentDetails(cfPath, block);
+    // getContentFragmentDetails(cfPath, block);
   });
   block.textContent = '';
   block.append(ul);
