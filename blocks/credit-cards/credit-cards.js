@@ -57,7 +57,7 @@ function renderContent(block, ccDetails) {
   //createButton(cardContainer, authoredLink, authoredButtonText);
 
   // Append the card container to the block
-  block.appendChild(cardContainer);
+  block.prependChild(cardContainer);
 }
 
 async function getContentFragmentDetails(block, cfPath) {
@@ -97,7 +97,7 @@ export default function decorate(block) {
         ?.getAttribute('data-aue-prop');
 
       if (notAButton) {
-        li.appendChild(divContainer);
+        li.appendChild(divContainer.firstElementChild);
       } else {
         const cfPath = divContainer.querySelector('a')?.title;
         getContentFragmentDetails(li, cfPath);
