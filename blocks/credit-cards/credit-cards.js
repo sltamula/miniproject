@@ -1,56 +1,55 @@
 const API_ENDPOINT =
   'https://author-p9606-e71941.adobeaemcloud.com/graphql/execute.json/miniproject/getCreditCardDetails';
 
-async function getContentFragmentDetails(cfPath) {
+/**
+ * Fetches credit card details from the AEM GraphQL API for a given content fragment path.
+ * @param {string} cfPath The path to the content fragment.
+ * @returns {Promise<object|null>} The credit card details or null if not found.
+ */
+async function getCreditCardDetails(cfPath) {
   if (!cfPath) {
-    console.error('Content fragment path not found.');
+    console.error('Content fragment path is missing.');
     return null;
   }
-
   const url = `${API_ENDPOINT};path=${cfPath}`;
-
   try {
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const cfData = await response.json();
-    const ccDetails = cfData?.data?.creditCardContainerByPath?.item;
-
-    if (!ccDetails) {
-      console.error('No credit card details found in content fragment.');
-    }
-    return ccDetails;
+    const data = await response.json();
+    return data?.data?.creditCardContainerByPath?.item || null;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error(`Error fetching data for ${cfPath}:`, error);
     return null;
   }
 }
 
+/**
+ * Decorates the block with fetched credit card details.
+ * @param {HTMLElement} block The block element.
+ */
 export default async function decorate(block) {
-  const children = [...block.children];
-
-  // Map each child to a Promise that fetches content fragment details.
-  const promises = children.map(row => {
-    const cfPath = row.querySelector('a')?.title;
-    return getContentFragmentDetails(cfPath);
-  });
-
-  // Await all promises to resolve concurrently.
-  const detailsArray = await Promise.all(promises);
-
+  // Clear the block's content before processing.
+  block.innerHTML = '';
   const ul = document.createElement('ul');
 
-  // Filter out any null values and map the results to <li> elements.
-  detailsArray
-    .filter(details => details)
-    .forEach(details => {
-      const li = document.createElement('li');
-      li.textContent = details.name;
-      ul.append(li);
-    });
+  // Find all content fragment link elements.
+  const cfLinks = [...block.querySelectorAll('a[title^="/content/dam"]')];
 
-  // Clear existing content and append the new list.
-  block.textContent = '';
-  block.append(ul);
+  // Fetch details for all content fragments concurrently.
+  const promises = cfLinks.map(link => getCreditCardDetails(link.title));
+  const detailsArray = await Promise.all(promises);
+
+  // Render the list items from the fetched data.
+  detailsArray.forEach(details => {
+    if (details) {
+      const li = document.createElement('li');
+      // Create and append the content for each card.
+      li.innerHTML = `<h3>${details.name}</h3><p>${details.description.html}</p>`;
+      ul.appendChild(li);
+    }
+  });
+
+  block.appendChild(ul);
 }
