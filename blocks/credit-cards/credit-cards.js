@@ -73,7 +73,7 @@ async function getContentFragmentDetails(block, cfPath) {
       const ccDetails = cfData?.data?.creditCardContainerByPath?.item;
 
       if (ccDetails) {
-        renderContent(block, ccDetails);
+        //renderContent(block, ccDetails);
       } else {
         console.error('No credit card details found in content fragment.');
       }
