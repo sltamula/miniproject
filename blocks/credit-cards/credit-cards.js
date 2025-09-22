@@ -56,8 +56,8 @@ function renderContent(block, ccDetails) {
   // Handle button generation
   //createButton(cardContainer, authoredLink, authoredButtonText);
 
-  // Append the card container to the block
-  block.prependChild(cardContainer);
+  // prepend the card container to the block
+  block.prepend(cardContainer);
 }
 
 async function getContentFragmentDetails(block, cfPath) {
