@@ -8,7 +8,10 @@ export default function decorate(block) {
   [...block.children].forEach(row => {
     const li = document.createElement('div');
     moveInstrumentation(row, li);
-    while (row.firstElementChild) li.append(row.firstElementChild);
+    while (row.firstElementChild) {
+      const parentDiv = document.querySelector('div');
+      const cfPath = parentDiv.querySelector('a')?.title;
+    }
   });
   block.textContent = '';
   block.append(cardContainer);
