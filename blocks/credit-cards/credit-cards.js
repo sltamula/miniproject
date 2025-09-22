@@ -6,7 +6,7 @@ export default function decorate(block) {
   cardContainer.className = 'credit-card__container';
 
   [...block.children].forEach(row => {
-    const li = document.createElement('li');
+    const li = document.createElement('div');
     moveInstrumentation(row, li);
     while (row.firstElementChild) li.append(row.firstElementChild);
     [...li.children].forEach(div => {
