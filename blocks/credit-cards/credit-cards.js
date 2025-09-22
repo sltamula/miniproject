@@ -1,7 +1,13 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
+const API_ENDPOINT =
+  'https://author-p9606-e71941.adobeaemcloud.com/graphql/execute.json/miniproject/getCreditCardDetails';
+
 export default function decorate(block) {
+  const children = [...block.children];
+  const cfPath = children[0].querySelector('a')?.title;
+
   /* change to ul, li */
   const ul = document.createElement('ul');
   [...block.children].forEach(row => {
