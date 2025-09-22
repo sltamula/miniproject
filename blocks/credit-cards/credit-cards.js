@@ -59,14 +59,15 @@ export default async function decorate(block) {
       buttonLink.textContent = authoredButtonText || 'Learn More';
       buttonLink.classList.add('button');
 
-      cardContainer.append(
-        image,
-        heading,
+      cardBodyContainer.append(
+        name,
         description,
         features,
         benefits,
         buttonLink
       );
+
+      cardContainer.append(image, cardBodyContainer);
       block.append(cardContainer);
     } else {
       console.error('No credit card details found in content fragment.');
