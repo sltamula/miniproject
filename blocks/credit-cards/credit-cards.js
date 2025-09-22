@@ -10,7 +10,7 @@ export default function decorate(block) {
     moveInstrumentation(row, li);
     // while (row.firstElementChild) li.append(row.firstElementChild);
     [...li.children].forEach(div => {
-      if (div.children.length === 1) {
+      if (div.children.length === 0) {
         const parentDiv = document.querySelector('div');
         const cfPath = parentDiv.querySelector('a')?.title;
       }
