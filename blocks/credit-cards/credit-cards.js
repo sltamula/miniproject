@@ -33,7 +33,7 @@ function renderContent(block, details, children) {
   // Clear existing content from the block
   block.innerHTML = '';
 
-  const [, linkDiv, buttonTextDiv] = children;
+  const [linkDiv, buttonTextDiv] = children;
   const authoredButtonText = linkDiv.textContent.trim();
   const authoredLink = children[1].querySelector('a')?.href;
 
