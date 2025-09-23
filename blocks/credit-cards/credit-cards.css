@@ -2,13 +2,25 @@
     box-sizing: border-box;
 }
 
-/* card container */
-.credit-card-container {
+.credit-cards {
     background: #ffffff;
     border-radius: 20px;
     max-width: 350px;
     min-height: 100%;
     border: 1px solid #dedee1;
+}
+
+/* card container */
+.credit-card-container {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #181b25;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+        'Helvetica Neue', sans-serif;
 }
 
 /* card image*/
@@ -38,25 +50,13 @@ h3.credit-card-name {
     margin: 0 0 12px 0;
 }
 
-/* Card description */
-.credit-card-desc {
+/* card description */
+.credit-card-description {
     color: #333;
     font-size: 1rem;
     margin: 0 24px 18px 24px;
 }
 
-/* Card offer section */
-.credit-card-offer {
-    font-weight: 700;
-    margin: 0 24px 8px 24px;
-}
-
-/* Card details */
-.credit-card-details {
-    color: #23235f;
-    font-size: 1rem;
-    margin: 0 24px 8px 24px;
-}
 .credit-card-details strong {
     font-weight: 700;
 }
