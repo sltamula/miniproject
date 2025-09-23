@@ -19,16 +19,6 @@
     background-color: #f3f4f6;
 }
 
-.credit-card-image img {
-    width: 100%;
-    max-width: 100%;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    border-radius: 0 0 8px 8px;
-    display: block;
-    margin-bottom: 24px;
-}
-
 /* card name */
 h3.credit-card-name {
     color: #1f1c4f;
