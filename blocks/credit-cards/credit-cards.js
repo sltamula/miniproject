@@ -6,29 +6,29 @@ function renderContent(block, ccDetails) {
 
   // Create card container
   const cardContainer = document.createElement('div');
-  cardContainer.className = 'creditcard__container';
+  cardContainer.className = 'credit-card-container';
 
   const cardBodyContainer = document.createElement('div');
-  cardBodyContainer.className = 'creditcard__body';
+  cardBodyContainer.className = 'credit-card-body';
 
   // Create and append card details
   const elementsToCreate = [
-    { tag: 'img', src: ccDetails.image._path, className: 'creditcard__image' },
-    { tag: 'h3', textContent: ccDetails.name, className: 'creditcard__name' },
+    { tag: 'img', src: ccDetails.image._path, className: 'credit-card-image' },
+    { tag: 'h3', textContent: ccDetails.name, className: 'credit-card-name' },
     {
       tag: 'div',
       innerHTML: ccDetails.description.html,
-      className: 'creditcard__description',
+      className: 'credit-card-description',
     },
     {
       tag: 'div',
       innerHTML: ccDetails.cardFeatures.html,
-      className: 'creditcard__features',
+      className: 'credit-card-features',
     },
     {
       tag: 'div',
       innerHTML: ccDetails.cardBenefits.html,
-      className: 'creditcard__benefits',
+      className: 'credit-card-benefits',
     },
   ];
 

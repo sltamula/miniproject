@@ -1,17 +1,68 @@
-* {
-    box-sizing: border-box;
+/* Card container */
+.credit-card-container {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    max-width: 400px;
+    margin: 32px auto;
+    font-family: 'Roboto', Arial, sans-serif;
+    border: 1px solid #ececec;
 }
 
-.credit-card__container {
-    font-size: 16px;
-    line-height: 1.5;
-    font-weight: 400;
-    color: #181b25;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-        'Helvetica Neue', sans-serif;
+/* Card image on top */
+.credit-card-image {
+    width: 100%;
+    display: block;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background: #f7f7fa;
+    padding: 32px 0 16px 0;
+    text-align: center;
+}
+.credit-card-image img {
+    max-width: 220px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
 }
 
-img.credit-card__image {
-    border-radius: 15px 15px 0 0;
+/* Card title */
+.credit-card-title {
+    color: #23235f;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 24px 24px 12px 24px;
+    line-height: 1.2;
+}
+
+/* Card description */
+.credit-card-desc {
+    color: #333;
+    font-size: 1rem;
+    margin: 0 24px 18px 24px;
+}
+
+/* Card offer section */
+.credit-card-offer {
+    font-weight: 700;
+    margin: 0 24px 8px 24px;
+}
+
+/* Card details */
+.credit-card-details {
+    color: #23235f;
+    font-size: 1rem;
+    margin: 0 24px 8px 24px;
+}
+.credit-card-details strong {
+    font-weight: 700;
+}
+
+/* Already with Westpac section */
+.credit-card-already {
+    color: #23235f;
+    font-size: 1rem;
+    margin: 0 24px 0 24px;
+    font-weight: 700;
 }
