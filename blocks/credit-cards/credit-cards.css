@@ -2,6 +2,7 @@
     box-sizing: border-box;
 }
 
+/* -----containers----- */
 .credit-card {
     background: #ffffff;
     border-radius: 20px;
@@ -23,16 +24,20 @@
         'Helvetica Neue', sans-serif;
 }
 
-/* card image*/
+.credit-card-body {
+    padding: 24px 18px 30px 18px;
+}
+
+/* -----card image----- */
 .credit-card-image {
     width: 100%;
     padding: 0;
     margin: 0;
-    border-radius: 15px 15px 0 0;
+    border-radius: 20px 20px 0 0;
     background-color: #f3f4f6;
 }
 
-/* card name */
+/* -----card name----- */
 h3.credit-card-name {
     color: #1f1c4f;
     font-size: 24px;
@@ -40,11 +45,7 @@ h3.credit-card-name {
     margin: 0 0 12px 0;
 }
 
-.credit-card-body {
-    padding: 24px 18px 30px 18px;
-}
-
-/* buttons */
+/* -----button----- */
 .button-container {
     padding: 0px 18px 12px 18px;
     margin-top: auto;
