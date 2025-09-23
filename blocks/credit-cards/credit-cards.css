@@ -56,5 +56,6 @@ h3.credit-card-name {
 
 .credit-cards-container {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
 }
