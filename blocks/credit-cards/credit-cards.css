@@ -28,7 +28,7 @@
     padding: 24px 18px 30px 18px;
 }
 
-.credit-card {
+.credit-cards .block {
     display: flex;
     flex-wrap: wrap;
 }
