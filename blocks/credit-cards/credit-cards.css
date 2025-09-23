@@ -38,7 +38,7 @@ h3.credit-card-name {
     margin-top: auto;
 }
 
-.button-container .button {
+p.button-container {
     display: flex;
     flex-direction: column;
 }
