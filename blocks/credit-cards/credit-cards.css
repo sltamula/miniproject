@@ -1,13 +1,17 @@
-/* Card container */
+* {
+    box-sizing: border-box;
+}
+
+/* card container */
 .credit-card-container {
-    background: #fff;
+    background: #ffffff;
     border-radius: 20px;
     max-width: 350px;
     min-height: 100%;
     border: 1px solid #dedee1;
 }
 
-/* Card image on top */
+/* card image*/
 .credit-card-image {
     width: 100%;
     padding: 0;
@@ -26,13 +30,12 @@
     margin-bottom: 24px;
 }
 
-/* Card title */
-.credit-card-title {
-    color: #23235f;
-    font-size: 1.5rem;
+/* card name */
+h3.credit-card-name {
+    color: #1f1c4f;
+    font-size: 24px;
     font-weight: 700;
-    margin: 24px 24px 12px 24px;
-    line-height: 1.2;
+    margin: 0 0 12px 0;
 }
 
 /* Card description */
@@ -55,14 +58,6 @@
     margin: 0 24px 8px 24px;
 }
 .credit-card-details strong {
-    font-weight: 700;
-}
-
-/* Already with Westpac section */
-.credit-card-already {
-    color: #23235f;
-    font-size: 1rem;
-    margin: 0 24px 0 24px;
     font-weight: 700;
 }
 
