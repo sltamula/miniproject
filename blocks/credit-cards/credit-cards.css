@@ -31,3 +31,8 @@ h3.credit-card-name {
 .credit-card-body {
     padding: 24px 18px 30px 18px;
 }
+
+.button-container {
+    padding: 0px 18px 12px 18px;
+    margin-top: auto;
+}
