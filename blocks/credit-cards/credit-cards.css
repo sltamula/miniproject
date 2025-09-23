@@ -51,7 +51,7 @@ p.button-container {
     color: #181b25;
 }
 
-.btn-wrapper a.button:hover {
+.button-container a.button:hover {
     border-color: #da1710;
     background-color: #e55d58;
     color: #ffffff;
