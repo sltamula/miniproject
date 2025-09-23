@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-.credit-cards {
+.credit-card-container {
     background: #ffffff;
     border-radius: 20px;
     max-width: 350px;
