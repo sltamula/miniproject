@@ -1,9 +1,6 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 function renderContent(block, ccDetails) {
-  // Clear existing content from the block
-  //block.innerHTML = '';
-
   // Create card container
   const cardContainer = document.createElement('div');
   cardContainer.className = 'credit-card-container';
@@ -87,6 +84,7 @@ export default function decorate(block) {
 
   [...block.children].forEach(row => {
     const li = document.createElement('div');
+    li.className = 'credit-card';
     const templi = document.createElement('div');
     moveInstrumentation(row, li);
     while (row.firstElementChild) templi.append(row.firstElementChild);
