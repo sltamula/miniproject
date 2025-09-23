@@ -50,9 +50,6 @@ function renderContent(block, ccDetails) {
   // Append the populated card body to the main card container
   cardContainer.appendChild(cardBodyContainer);
 
-  // Handle button generation
-  //createButton(cardContainer, authoredLink, authoredButtonText);
-
   // prepend the card container to the block
   block.prepend(cardContainer);
 }
@@ -81,10 +78,12 @@ async function getContentFragmentDetails(block, cfPath) {
 export default function decorate(block) {
   /* change to ul, li */
   const parentDivContainer = document.createElement('div');
+  parentDivContainer.className = 'credit-card--main';
 
   [...block.children].forEach(row => {
     const li = document.createElement('div');
     li.className = 'credit-card';
+
     const templi = document.createElement('div');
     moveInstrumentation(row, li);
     while (row.firstElementChild) templi.append(row.firstElementChild);
