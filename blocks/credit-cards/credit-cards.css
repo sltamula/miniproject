@@ -50,17 +50,6 @@ h3.credit-card-name {
     margin: 0 0 12px 0;
 }
 
-/* card description */
-.credit-card-description {
-    color: #333;
-    font-size: 1rem;
-    margin: 0 24px 18px 24px;
-}
-
-.credit-card-details strong {
-    font-weight: 700;
-}
-
 .credit-card-body {
     padding: 24px 18px 30px 18px;
 }
