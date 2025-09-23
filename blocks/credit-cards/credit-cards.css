@@ -28,6 +28,11 @@
     padding: 24px 18px 30px 18px;
 }
 
+.credit-card {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 /* -----card image----- */
 .credit-card-image {
     width: 100%;
