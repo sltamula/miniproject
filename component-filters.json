@@ -37,6 +37,6 @@
   },
   {
     "id": "credit-cards",
-    "components": ["credit-card"]
+    "components": ["text", "credit-card"]
   }
 ]
