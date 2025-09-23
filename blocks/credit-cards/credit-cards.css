@@ -2,12 +2,9 @@
 .credit-card-container {
     background: #fff;
     border-radius: 20px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    max-width: 400px;
-    margin: 32px auto;
-    font-family: 'Roboto', Arial, sans-serif;
-    border: 1px solid #ececec;
+    max-width: 350px;
+    min-height: 100%;
+    border: 1px solid #dedee1;
 }
 
 /* Card image on top */
