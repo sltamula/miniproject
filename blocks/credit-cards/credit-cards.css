@@ -53,9 +53,3 @@ h3.credit-card-name {
 .credit-card-body {
     padding: 24px 18px 30px 18px;
 }
-
-.credit-cards-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
