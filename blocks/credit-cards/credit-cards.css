@@ -32,6 +32,7 @@ h3.credit-card-name {
     padding: 24px 18px 30px 18px;
 }
 
+/* buttons */
 .button-container {
     padding: 0px 18px 12px 18px;
     margin-top: auto;
@@ -48,4 +49,12 @@ h3.credit-card-name {
     border-radius: 3px;
     background-color: #ffffff;
     color: #181b25;
+}
+
+.btn-wrapper a.button:hover {
+    border-color: #da1710;
+    background-color: #e55d58;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
 }
