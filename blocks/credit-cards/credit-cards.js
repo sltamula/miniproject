@@ -91,7 +91,13 @@ export default function decorate(block) {
         .querySelector('a')
         ?.getAttribute('data-aue-prop');
 
+      const isCfPath = divContainer.querySelector('a')?.title;
+
       if (isButton) {
+        creditCardDiv.appendChild(divContainer.firstElementChild);
+      } else if (isCfPath) {
+        getContentFragmentDetails(creditCardDiv, isCfPath);
+      } else {
         const buttonLink = divContainer.querySelector('a').href;
         const openInNewTab = divContainer
           .querySelector('p')
@@ -101,10 +107,6 @@ export default function decorate(block) {
         if (openInNewTab === 'true') {
           divContainer.querySelector('a').setAttribute('target', '_blank');
         }
-        creditCardDiv.appendChild(divContainer.firstElementChild);
-      } else {
-        const cfPath = divContainer.querySelector('a')?.title;
-        getContentFragmentDetails(creditCardDiv, cfPath);
       }
     });
     parentDiv.append(creditCardDiv);
