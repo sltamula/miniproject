@@ -33,6 +33,16 @@
   ],
   "models": [
     {
+      "id": "credit-cards",
+      "fields": [
+        {
+          "component": "text",
+          "name": "headingText",
+          "label": "Heading Text"
+        }
+      ]
+    },
+    {
       "id": "credit-card",
       "fields": [
         {
