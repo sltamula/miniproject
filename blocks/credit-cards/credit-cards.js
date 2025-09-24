@@ -96,7 +96,8 @@ export default function decorate(block) {
         const buttonLink = divContainer.querySelector('a').href;
         const openInNewTab = divContainer
           .querySelector('p')
-          .textContent.toLowerCase();
+          .textContent.trim()
+          .toLowerCase();
         if (openInNewTab === 'true') {
           window.open(buttonLink, '_blank');
         }
