@@ -76,31 +76,29 @@ async function getContentFragmentDetails(block, cfPath) {
 }
 
 export default function decorate(block) {
-  /* change to ul, li */
   const parentDivContainer = document.createElement('div');
   parentDivContainer.className = 'credit-card--main';
 
-  [...block.children].forEach(row => {
-    const li = document.createElement('div');
-    li.className = 'credit-card';
+  [...block.children].forEach(creditCard => {
+    const ccDiv = document.createElement('div');
+    ccDiv.className = 'credit-card';
 
-    const templi = document.createElement('div');
-    moveInstrumentation(row, li);
-    while (row.firstElementChild) templi.append(row.firstElementChild);
-    [...templi.children].forEach(divContainer => {
+    moveInstrumentation(creditCard, ccDiv);
+
+    [...creditCard.children].forEach(divContainer => {
       if (divContainer.children.length !== 1) return;
-      const notAButton = divContainer
+      const isButton = divContainer
         .querySelector('a')
         ?.getAttribute('data-aue-prop');
 
-      if (notAButton) {
-        li.appendChild(divContainer.firstElementChild);
+      if (isButton) {
+        ccDiv.appendChild(divContainer.firstElementChild);
       } else {
         const cfPath = divContainer.querySelector('a')?.title;
-        getContentFragmentDetails(li, cfPath);
+        getContentFragmentDetails(ccDiv, cfPath);
       }
     });
-    parentDivContainer.append(li);
+    parentDivContainer.append(ccDiv);
   });
   block.textContent = '';
   block.append(parentDivContainer);
