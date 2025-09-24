@@ -76,30 +76,30 @@ async function getContentFragmentDetails(block, cfPath) {
 }
 
 export default function decorate(block) {
-  const parentDivContainer = document.createElement('div');
-  parentDivContainer.className = 'credit-card--main';
+  const parentDiv = document.createElement('div');
+  parentDiv.className = 'credit-card--main';
 
-  [...block.children].forEach(creditCard => {
-    const ccDiv = document.createElement('div');
-    ccDiv.className = 'credit-card';
+  [...block.children].forEach(ccItem => {
+    const creditCardDiv = document.createElement('div');
+    creditCardDiv.className = 'credit-card';
 
-    moveInstrumentation(creditCard, ccDiv);
+    moveInstrumentation(ccItem, creditCardDiv);
 
-    [...creditCard.children].forEach(divContainer => {
+    [...ccItem.children].forEach(divContainer => {
       if (divContainer.children.length !== 1) return;
       const isButton = divContainer
         .querySelector('a')
         ?.getAttribute('data-aue-prop');
 
       if (isButton) {
-        ccDiv.appendChild(divContainer.firstElementChild);
+        creditCardDiv.appendChild(divContainer.firstElementChild);
       } else {
         const cfPath = divContainer.querySelector('a')?.title;
-        getContentFragmentDetails(ccDiv, cfPath);
+        getContentFragmentDetails(creditCardDiv, cfPath);
       }
     });
-    parentDivContainer.append(ccDiv);
+    parentDiv.append(creditCardDiv);
   });
   block.textContent = '';
-  block.append(parentDivContainer);
+  block.append(parentDiv);
 }
