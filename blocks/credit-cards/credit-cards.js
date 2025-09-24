@@ -93,18 +93,17 @@ export default function decorate(block) {
         ?.getAttribute('data-aue-prop');
 
       if (isButton) {
+        const buttonLink = divContainer.querySelector('a').href;
+        const openInNewTab = divContainer
+          .querySelector('p')
+          .textContent.toLowerCase();
+        if (openInNewTab === 'true') {
+          window.open(buttonLink, '_blank');
+        }
         creditCardDiv.appendChild(divContainer.firstElementChild);
       } else {
         const cfPath = divContainer.querySelector('a')?.title;
         getContentFragmentDetails(creditCardDiv, cfPath);
-      }
-
-      const buttonLink = divContainer.querySelector('a').href;
-      const openInNewTab = divContainer
-        .querySelector('p')
-        .textContent.toLowerCase();
-      if (openInNewTab === 'true') {
-        window.open(buttonLink, '_blank');
       }
     });
     parentDiv.append(creditCardDiv);
