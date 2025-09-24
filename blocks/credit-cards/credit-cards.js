@@ -87,17 +87,15 @@ export default function decorate(block) {
 
     [...ccItem.children].forEach(divContainer => {
       if (divContainer.children.length !== 1) return;
+
+      const cfPath = divContainer.querySelector('a')?.title;
       const isButton = divContainer
         .querySelector('a')
         ?.getAttribute('data-aue-prop');
 
-      const isCfPath = divContainer.querySelector('a')?.title;
-
-      if (isButton) {
-        creditCardDiv.appendChild(divContainer.firstElementChild);
-      } else if (isCfPath) {
-        getContentFragmentDetails(creditCardDiv, isCfPath);
-      } else {
+      if (cfPath) {
+        getContentFragmentDetails(creditCardDiv, cfPath);
+      } else if (isButton) {
         const buttonLink = divContainer.querySelector('a').href;
         const openInNewTab = divContainer
           .querySelector('p')
@@ -107,6 +105,7 @@ export default function decorate(block) {
         if (openInNewTab === 'true') {
           divContainer.querySelector('a').setAttribute('target', '_blank');
         }
+        creditCardDiv.appendChild(divContainer.firstElementChild);
       }
     });
     parentDiv.append(creditCardDiv);
