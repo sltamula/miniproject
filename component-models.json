@@ -252,6 +252,11 @@
         "component": "text",
         "name": "linkText",
         "label": "Button Text"
+      },
+      {
+        "component": "boolean",
+        "name": "openLinkInNewTab",
+        "label": "Open link in new tab"
       }
     ]
   }
