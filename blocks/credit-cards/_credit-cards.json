@@ -66,7 +66,7 @@
   "filters": [
     {
       "id": "credit-cards",
-      "components": ["heading", "credit-card"]
+      "components": ["credit-card"]
     }
   ]
 }
