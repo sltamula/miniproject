@@ -33,16 +33,6 @@
   ],
   "models": [
     {
-      "id": "credit-cards",
-      "fields": [
-        {
-          "component": "text",
-          "name": "heading",
-          "label": "Heading"
-        }
-      ]
-    },
-    {
       "id": "credit-card",
       "fields": [
         {
@@ -57,7 +47,7 @@
         },
         {
           "component": "text",
-          "name": "linkText",
+          "name": "buttonText",
           "label": "Button Text"
         }
       ]
