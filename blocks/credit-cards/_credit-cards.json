@@ -33,6 +33,18 @@
   ],
   "models": [
     {
+      "id": "heading",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "heading",
+          "value": "",
+          "label": "Heading Text"
+        }
+      ]
+    },
+    {
       "id": "credit-card",
       "fields": [
         {
