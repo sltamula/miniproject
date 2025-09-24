@@ -96,6 +96,9 @@ export default function decorate(block) {
       if (cfPath) {
         getContentFragmentDetails(creditCardDiv, cfPath);
       } else if (isButton) {
+        creditCardDiv.appendChild(divContainer.firstElementChild);
+      } else {
+        //const buttonLink = divContainer.querySelector('a').href;
         const openInNewTab = divContainer
           .querySelector('p')
           .textContent.trim()
@@ -105,7 +108,6 @@ export default function decorate(block) {
           divContainer.querySelector('a').setAttribute('target', '_blank');
         }
       }
-      creditCardDiv.appendChild(divContainer.firstElementChild);
     });
     parentDiv.append(creditCardDiv);
   });
