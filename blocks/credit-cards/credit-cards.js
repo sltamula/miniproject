@@ -87,25 +87,24 @@ export default function decorate(block) {
 
     [...ccItem.children].forEach(divContainer => {
       if (divContainer.children.length !== 1) return;
-
       const isButton = divContainer
         .querySelector('a')
         ?.getAttribute('data-aue-prop');
 
       if (isButton) {
+        const buttonLink = divContainer.querySelector('a').href;
+        const openInNewTab = divContainer
+          .querySelector('p')
+          .textContent.trim()
+          .toLowerCase();
+
+        if (openInNewTab === 'true') {
+          divContainer.querySelector('a').setAttribute('target', '_blank');
+        }
         creditCardDiv.appendChild(divContainer.firstElementChild);
       } else {
         const cfPath = divContainer.querySelector('a')?.title;
         getContentFragmentDetails(creditCardDiv, cfPath);
-      }
-
-      const buttonLink = divContainer.querySelector('a').href;
-      const openInNewTab = divContainer
-        .querySelector('p')
-        .textContent.trim()
-        .toLowerCase();
-      if (openInNewTab === 'true') {
-        window.open(buttonLink, '_blank');
       }
     });
     parentDiv.append(creditCardDiv);
