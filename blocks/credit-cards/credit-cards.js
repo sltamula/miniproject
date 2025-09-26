@@ -1,14 +1,15 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 function renderContent(block, ccDetails) {
-  // Create card container
+  // main container for the credit card.
   const cardContainer = document.createElement('div');
   cardContainer.className = 'credit-card-container';
 
+  // inner container for credit card body
   const cardBodyContainer = document.createElement('div');
   cardBodyContainer.className = 'credit-card-body';
 
-  // Create and append card details
+  // list of different elements and its content
   const elementsToCreate = [
     { tag: 'img', src: ccDetails.image._path, className: 'credit-card-image' },
     { tag: 'h3', textContent: ccDetails.name, className: 'credit-card-name' },
@@ -33,6 +34,7 @@ function renderContent(block, ccDetails) {
     ({ tag, src, textContent, innerHTML, className }) => {
       const element = document.createElement(tag);
 
+      //apply all the properties to the created element
       if (src) element.src = src;
       if (textContent) element.textContent = textContent;
       if (innerHTML) element.innerHTML = innerHTML;

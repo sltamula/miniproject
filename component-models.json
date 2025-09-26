@@ -216,26 +216,6 @@
     ]
   },
   {
-    "id": "credit-card-product",
-    "fields": [
-      {
-        "component": "aem-content-fragment",
-        "name": "reference",
-        "label": "Content Fragment Reference"
-      },
-      {
-        "component": "aem-content",
-        "name": "link",
-        "label": "Path"
-      },
-      {
-        "component": "text",
-        "name": "linkText",
-        "label": "Button Text"
-      }
-    ]
-  },
-  {
     "id": "credit-card",
     "fields": [
       {
