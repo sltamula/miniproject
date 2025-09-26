@@ -60,21 +60,52 @@ async function getContentFragmentDetails(block, cfPath) {
   const API_ENDPOINT =
     'https://author-p9606-e71941.adobeaemcloud.com/graphql/execute.json/miniproject/getCreditCardDetails';
 
-  if (cfPath) {
-    const url = `${API_ENDPOINT};path=${cfPath}`;
+  if (!cfPath) {
+    console.error('Content fragment path (cfPath) is missing.');
+    return;
+  }
+
+  const url = `${API_ENDPOINT};path=${cfPath}`;
+
+  try {
     const response = await fetch(url);
 
-    if (response.ok) {
-      const cfData = await response.json();
-      const ccDetails = cfData?.data?.creditCardContainerByPath?.item;
-
-      if (ccDetails) {
-        renderContent(block, ccDetails);
-      } else {
-        console.error('No credit card details found in content fragment.');
-      }
+    if (!response.ok) {
+      throw new Error(
+        `Network response was not ok, status: ${response.status}`
+      );
     }
+
+    const cfData = await response.json();
+    const ccDetails = cfData?.data?.creditCardContainerByPath?.item;
+
+    if (ccDetails) {
+      // Assuming renderContent is an existing function.
+      renderContent(block, ccDetails);
+    } else {
+      console.error(
+        'No credit card details found at the specified content fragment path.'
+      );
+    }
+  } catch (error) {
+    console.error('Failed to fetch or process credit card details:', error);
   }
+
+  // if (cfPath) {
+  //   const url = `${API_ENDPOINT};path=${cfPath}`;
+  //   const response = await fetch(url);
+
+  //   if (response.ok) {
+  //     const cfData = await response.json();
+  //     const ccDetails = cfData?.data?.creditCardContainerByPath?.item;
+
+  //     if (ccDetails) {
+  //       renderContent(block, ccDetails);
+  //     } else {
+  //       console.error('No credit card details found in content fragment.');
+  //     }
+  //   }
+  // }
 }
 
 export default function decorate(block) {
