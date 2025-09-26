@@ -216,7 +216,7 @@
     ]
   },
   {
-    "id": "credit-card",
+    "id": "product",
     "fields": [
       {
         "component": "aem-content-fragment",

@@ -14,7 +14,7 @@
       "cards",
       "columns",
       "fragment",
-      "credit-cards"
+      "products"
     ]
   },
   {
@@ -30,11 +30,7 @@
     "components": ["text", "image", "button", "title"]
   },
   {
-    "id": "product-list",
-    "components": ["credit-card-product"]
-  },
-  {
-    "id": "credit-cards",
-    "components": ["credit-card"]
+    "id": "products",
+    "components": ["product"]
   }
 ]
